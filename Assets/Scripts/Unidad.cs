@@ -9,4 +9,14 @@ public class Unidad : MonoBehaviour
     public int danio;
     public int saludMaxima;
     public int saludActual;
+
+    public bool RecibirDanio(int danio)
+    {
+        saludActual -= danio;
+
+        if (saludActual < -0)
+            return true;
+        else
+            return false;
+    }
 }
