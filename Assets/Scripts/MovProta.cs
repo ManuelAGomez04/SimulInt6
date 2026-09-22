@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class MovProta : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float speed = 5f;
+    public Vector2 direction;
+
+    Rigidbody2D rigidbody;
+
+    private void Strats()
     {
-        
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        rigidbody.velocity = direction * speed;
     }
+
+    private void Update()
+    {
+        Movement();
+    }
+
+    private void Movement()
+    { 
+        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+    }
+
 }
