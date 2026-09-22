@@ -28,4 +28,9 @@ public class HUDBatalla : MonoBehaviour
     {
         throw new NotImplementedException();
     }
+
+    internal void SetSalud(object saludActual)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -26,14 +26,16 @@ public class SistemaBatalla : MonoBehaviour
     public HUDBatalla jugadorHUD;
     public HUDBatalla enemigoHUD;
 
+    public Text dialogoTexto;
+
     public EstadoBatalla state;
     void Start()
     {
         state = EstadoBatalla.COMIENZO;
-        ComenzarBatalla();
+        StartCoroutine(ComenzarBatalla());
     }
 
-    void ComenzarBatalla()
+    IEnumerator ComenzarBatalla()
     {
         GameObject jugador1Go = Instantiate(jugadorPrefab1, jugador1PosBatalla);
         unidadJugador1 = jugador1Go.GetComponent<Unit>();
@@ -49,5 +51,72 @@ public class SistemaBatalla : MonoBehaviour
 
         jugadorHUD.SetHUD(unidadJugador1);
         enemigoHUD.SetHUD(unidadEnemigo);
+
+        yield return new WaitForSeconds(2f);
+
+        state = EstadoBatalla.TURNOJUG;
+        TurnoJugador();
+    }
+    IEnumerator AtaqueJugador()
+    {
+        bool muerto = unidadEnemigo.RecibirDanio(unidadJugador1.danio);
+
+        enemigoHUD.SetSalud(unidadEnemigo.saludActual);
+        dialogoTexto.text = "Ataque exitoso";
+
+        yield return new WaitForSeconds(2f);
+
+        if (muerto)
+        {
+            state = EstadoBatalla.VICTORIA;
+            TerminarBatalla();
+        }
+        else
+        {
+            state = EstadoBatalla.TURNOENEM;
+            StartCoroutine(TurnoEnemigo());
+        }
+    }
+    IEnumerator TurnoEnemigo()
+    {
+        dialogoTexto.text = unidadEnemigo.nombre + " ataca!";
+
+        yield return new WaitForSeconds(2f);
+
+        bool muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
+        
+        jugadorHUD.SetSalud(unidadJugador1.saludActual);
+
+        yield return new WaitForSeconds(1f);
+
+        if(muerto)
+        {
+            state = EstadoBatalla.DERROTA;
+            TerminarBatalla();
+        }else
+        {
+            state = EstadoBatalla.TURNOJUG;
+            TurnoJugador();
+        }
+    }
+    void TerminarBatalla()
+    {
+        if(state == EstadoBatalla.VICTORIA)
+        {
+            dialogoTexto.text = "¡Victoria!";
+        }else if (state == EstadoBatalla.DERROTA)
+        {
+            dialogoTexto.text = "Derrota";
+        }
+    }
+    void TurnoJugador()
+    {
+        dialogoTexto.text = "Tu turno"; 
+    }
+    public void AtaqueBoton()
+    {
+        if (state != EstadoBatalla.TURNOJUG)
+            return;
+        StartCoroutine(AtaqueJugador());
     }
 }
