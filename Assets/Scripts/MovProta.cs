@@ -6,10 +6,11 @@ public class MovProta : MonoBehaviour
 {
     public float speed = 5f;
     public Vector2 direction;
+    public object Rigidbody2D;
 
     Rigidbody2D rigidbody;
 
-    private void Strats()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
     }
