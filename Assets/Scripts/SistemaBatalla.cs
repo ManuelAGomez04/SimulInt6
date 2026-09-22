@@ -23,7 +23,9 @@ public class SistemaBatalla : MonoBehaviour
     Unit unidadJugador3;
     Unit unidadEnemigo;
 
-    
+    public HUDBatalla jugadorHUD;
+    public HUDBatalla enemigoHUD;
+
     public EstadoBatalla state;
     void Start()
     {
@@ -44,5 +46,8 @@ public class SistemaBatalla : MonoBehaviour
 
         GameObject enemigoGo = Instantiate(enemigoPrefab, enemigoPosBatalla);
         unidadEnemigo = enemigoGo.GetComponent<Unit>();
+
+        jugadorHUD.SetHUD(unidadJugador1);
+        enemigoHUD.SetHUD(unidadEnemigo);
     }
 }
