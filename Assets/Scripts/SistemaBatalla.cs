@@ -23,7 +23,9 @@ public class SistemaBatalla : MonoBehaviour
     Unidad unidadJugador3;
     Unidad unidadEnemigo;
 
-    public HUDBatalla jugadorHUD;
+    public HUDBatalla jugador1HUD;
+    public HUDBatalla jugador2HUD;
+    public HUDBatalla jugador3HUD;
     public HUDBatalla enemigoHUD;
 
     public Text dialogoTexto;
@@ -128,7 +130,9 @@ public class SistemaBatalla : MonoBehaviour
         GameObject enemigoGo = Instantiate(enemigoPrefab, enemigoPosBatalla);
         unidadEnemigo = enemigoGo.GetComponent<Unidad>();
 
-        jugadorHUD.SetHUD(unidadJugador1);
+        jugador1HUD.SetHUD(unidadJugador1);
+        jugador2HUD.SetHUD(unidadJugador2);
+        jugador3HUD.SetHUD(unidadJugador3);
         enemigoHUD.SetHUD(unidadEnemigo);
 
         yield return new WaitForSeconds(2f);
@@ -145,7 +149,7 @@ public class SistemaBatalla : MonoBehaviour
 
         bool muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
 
-        jugadorHUD.SetSalud(unidadJugador1.saludActual);
+        jugador1HUD.SetSalud(unidadJugador1.saludActual);
 
         yield return new WaitForSeconds(1f);
 

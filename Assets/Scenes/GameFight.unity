@@ -2626,7 +2626,6 @@ RectTransform:
   - {fileID: 506286329}
   - {fileID: 662388538}
   - {fileID: 1447935431}
-  - {fileID: 1624300740}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3321,7 +3320,6 @@ GameObject:
   - component: {fileID: 1424262872}
   - component: {fileID: 1424262874}
   - component: {fileID: 1424262873}
-  - component: {fileID: 1424262876}
   - component: {fileID: 1424262875}
   m_Layer: 5
   m_Name: Jugador3
@@ -3405,21 +3403,6 @@ MonoBehaviour:
   nombreTexto: {fileID: 628671005}
   nivelTexto: {fileID: 57673733}
   vidaSlider: {fileID: 510371812}
---- !u!114 &1424262876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424262871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf6fb7a089e0024c8dcbeb54508a1b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombreTexto: {fileID: 0}
-  nivelTexto: {fileID: 0}
-  vidaSlider: {fileID: 0}
 --- !u!1 &1447935430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3453,6 +3436,7 @@ RectTransform:
   - {fileID: 651803839}
   - {fileID: 1948114778}
   - {fileID: 1219902887}
+  - {fileID: 1624300740}
   - {fileID: 1481049408}
   m_Father: {fileID: 1014594321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4012,7 +3996,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: .
+  m_Text: 'A
+
+'
 --- !u!222 &1624300739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4028,16 +4014,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624300737}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1014594321}
+  m_Father: {fileID: 1447935431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -417.7, y: -133.9}
+  m_AnchoredPosition: {x: -161.21002, y: 67.73999}
   m_SizeDelta: {x: 251.4296, y: 62.5784}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1764702443
@@ -4548,10 +4534,8 @@ GameObject:
   - component: {fileID: 1915264277}
   - component: {fileID: 1915264276}
   - component: {fileID: 1915264278}
-  - component: {fileID: 1915264280}
-  - component: {fileID: 1915264279}
   m_Layer: 5
-  m_Name: Jugador
+  m_Name: Jugador1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4632,36 +4616,6 @@ MonoBehaviour:
   nombreTexto: {fileID: 706359064}
   nivelTexto: {fileID: 49938884}
   vidaSlider: {fileID: 1026765681}
---- !u!114 &1915264279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915264274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf6fb7a089e0024c8dcbeb54508a1b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombreTexto: {fileID: 0}
-  nivelTexto: {fileID: 0}
-  vidaSlider: {fileID: 0}
---- !u!114 &1915264280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915264274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcf6fb7a089e0024c8dcbeb54508a1b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombreTexto: {fileID: 0}
-  nivelTexto: {fileID: 0}
-  vidaSlider: {fileID: 0}
 --- !u!1 &1948114777
 GameObject:
   m_ObjectHideFlags: 0
@@ -4820,7 +4774,9 @@ MonoBehaviour:
   jugador2PosBatalla: {fileID: 1519441037}
   jugador3PosBatalla: {fileID: 18135330}
   enemigoPosBatalla: {fileID: 427026192}
-  jugadorHUD: {fileID: 1915264278}
+  jugador1HUD: {fileID: 1915264278}
+  jugador2HUD: {fileID: 506286332}
+  jugador3HUD: {fileID: 1424262875}
   enemigoHUD: {fileID: 662388541}
   dialogoTexto: {fileID: 1624300738}
   state: 0
