@@ -34,7 +34,86 @@ public class SistemaBatalla : MonoBehaviour
         state = EstadoBatalla.COMIENZO;
         StartCoroutine(ComenzarBatalla());
     }
+    IEnumerator AtaqueJugador()
+    {
 
+        int danioFinal = unidadJugador1.danio;
+        int suerte = Random.Range(1, 5);
+        int esquivar = Random.Range(1, 10);
+        print("suerte:" + suerte.ToString());
+        print("esquivar:" + esquivar.ToString());
+
+        //1 al 6 no pasa nada
+        //7 y 8 =0.5
+        //9 al 10 esquiva completamente
+
+        if (esquivar <= 6)
+        {
+            //no hacemos nada
+
+
+        }
+        else if (esquivar <= 8)
+        {
+            danioFinal = danioFinal / 2;
+
+
+        }
+        else
+        {//9 y 10
+
+            danioFinal = 0;
+        }
+
+        //print(suerte);
+
+        if (suerte == 6)
+        {
+            danioFinal = danioFinal * 2;
+
+
+        }
+        else
+        {
+
+            //normal
+
+        }
+
+
+
+        bool muerto = unidadEnemigo.RecibirDanio(danioFinal);
+
+
+        //suerte
+        //0 no acertaste
+        //1 a 5 normal
+        //6 critico
+
+
+
+
+
+
+
+
+
+        enemigoHUD.SetSalud(unidadEnemigo.saludActual);
+        dialogoTexto.text = "Ataque exitoso";
+
+        yield return new WaitForSeconds(2f);
+
+        if (muerto)
+        {
+            state = EstadoBatalla.VICTORIA;
+            TerminarBatalla();
+        }
+        else
+        {
+            state = EstadoBatalla.TURNOENEM;
+            StartCoroutine(TurnoEnemigo());
+        }
+    }
     IEnumerator ComenzarBatalla()
     {
         GameObject jugador1Go = Instantiate(jugadorPrefab1, jugador1PosBatalla);
@@ -57,26 +136,7 @@ public class SistemaBatalla : MonoBehaviour
         state = EstadoBatalla.TURNOJUG;
         TurnoJugador();
     }
-    IEnumerator AtaqueJugador()
-    {
-        bool muerto = unidadEnemigo.RecibirDanio(unidadJugador1.danio);
-
-        enemigoHUD.SetSalud(unidadEnemigo.saludActual);
-        dialogoTexto.text = "Ataque exitoso";
-
-        yield return new WaitForSeconds(2f);
-
-        if (muerto)
-        {
-            state = EstadoBatalla.VICTORIA;
-            TerminarBatalla();
-        }
-        else
-        {
-            state = EstadoBatalla.TURNOENEM;
-            StartCoroutine(TurnoEnemigo());
-        }
-    }
+  
     IEnumerator TurnoEnemigo()
     {
         dialogoTexto.text = unidadEnemigo.nombre + " ataca!";

@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDBatalla : MonoBehaviour
 {
-    public Text nombreTexto;
-    public Text nivelTexto;
-    public Slider vidaSlider;
+    public TextMeshProUGUI nombreTexto;
+    public TextMeshProUGUI nivelTexto;
+    public Slider vidaSlider; 
 
     public void SetHUD(Unidad unidad)
     {
