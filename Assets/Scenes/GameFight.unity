@@ -4342,6 +4342,8 @@ GameObject:
   - component: {fileID: 1915264277}
   - component: {fileID: 1915264276}
   - component: {fileID: 1915264278}
+  - component: {fileID: 1915264280}
+  - component: {fileID: 1915264279}
   m_Layer: 5
   m_Name: Jugador
   m_TagString: Untagged
@@ -4430,6 +4432,36 @@ MonoBehaviour:
   nombreTexto: {fileID: 706359064}
   nivelTexto: {fileID: 49938884}
   vidaSlider: {fileID: 1026765681}
+--- !u!114 &1915264279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915264274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6fb7a089e0024c8dcbeb54508a1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreTexto: {fileID: 628671005}
+  nivelTexto: {fileID: 57673733}
+  vidaSlider: {fileID: 510371812}
+--- !u!114 &1915264280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915264274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf6fb7a089e0024c8dcbeb54508a1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nombreTexto: {fileID: 1792969372}
+  nivelTexto: {fileID: 655607905}
+  vidaSlider: {fileID: 326495706}
 --- !u!1 &1948114777
 GameObject:
   m_ObjectHideFlags: 0
