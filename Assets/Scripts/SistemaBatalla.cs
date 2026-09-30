@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EstadoBatalla{ COMIENZO, TURNOJUG, TURNOENEM, VICTORIA, DERROTA }
+public enum EstadoBatalla{ COMIENZO, TURNOJUG, TURNOENEM, VICTORIA, DERROTA , ESPERANDO }
 
 public class SistemaBatalla : MonoBehaviour
 {
@@ -29,7 +29,7 @@ public class SistemaBatalla : MonoBehaviour
     public HUDBatalla jugador2HUD;
     public HUDBatalla jugador3HUD;
     public HUDBatalla enemigoHUD;
-
+    
     public Text dialogoTexto;
 
     public EstadoBatalla state;
@@ -41,7 +41,7 @@ public class SistemaBatalla : MonoBehaviour
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
         dialogoTexto.text = " !Le toca a " + Jugador.nombre;
-        state = EstadoBatalla.TURNOENEM;
+        state = EstadoBatalla.ESPERANDO;
         float danioFinal = Jugador.danio;
         int suerte = Random.Range(1, 5);
         int esquivar = Random.Range(1, 10);
