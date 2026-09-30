@@ -2250,8 +2250,9 @@ GameObject:
   - component: {fileID: 801384003}
   - component: {fileID: 801384005}
   - component: {fileID: 801384004}
+  - component: {fileID: 801384006}
   m_Layer: 5
-  m_Name: Image
+  m_Name: GameOverUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2291,7 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.54509807}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.57254905}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2316,6 +2317,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801384002}
   m_CullTransparentMesh: 1
+--- !u!114 &801384006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801384002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba9c5d3283425e4c91fb84da68457bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &899338059
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,7 +4366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7, y: -36.79799}
+  m_AnchoredPosition: {x: -23, y: -0.000015259}
   m_SizeDelta: {x: 388.5443, y: 73.5952}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1750596583
