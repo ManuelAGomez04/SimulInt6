@@ -13,6 +13,7 @@ public class SistemaBatalla : MonoBehaviour
     public GameObject jugadorPrefab3;
     public GameObject enemigoPrefab;
     public GameManagerScript gameManager;
+    public bool isDead;
 
     public Transform jugador1PosBatalla;
     public Transform jugador2PosBatalla;
@@ -170,8 +171,9 @@ public class SistemaBatalla : MonoBehaviour
         {
             dialogoTexto.text = "¡Victoria!";
         }
-        else if (state == EstadoBatalla.DERROTA)
+        else if (state == EstadoBatalla.DERROTA && !isDead)
         {
+            isDead = true;
             gameManager.gameOver();
             dialogoTexto.text = "Derrota";
         }
