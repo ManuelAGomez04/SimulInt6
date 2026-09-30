@@ -38,10 +38,11 @@ public class SistemaBatalla : MonoBehaviour
         state = EstadoBatalla.COMIENZO;
         StartCoroutine(ComenzarBatalla());
     }
-    IEnumerator AtaqueJugador()
+    IEnumerator AtaqueJugador(Unidad Jugador)
     {
-
-        int danioFinal = unidadJugador1.danio;
+        dialogoTexto.text = " !Le toca a " + Jugador.nombre;
+        state = EstadoBatalla.TURNOENEM;
+        float danioFinal = Jugador.danio;
         int suerte = Random.Range(1, 5);
         int esquivar = Random.Range(1, 10);
         print("suerte:" + suerte.ToString());
@@ -104,7 +105,7 @@ public class SistemaBatalla : MonoBehaviour
         enemigoHUD.SetSalud(unidadEnemigo.saludActual);
         dialogoTexto.text = "Ataque exitoso";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         if (muerto)
         {
@@ -113,8 +114,21 @@ public class SistemaBatalla : MonoBehaviour
         }
         else
         {
-            state = EstadoBatalla.TURNOENEM;
-            StartCoroutine(TurnoEnemigo());
+           if (Jugador.nombre == "Sofia") 
+            {
+                StartCoroutine(AtaqueJugador(unidadJugador2));
+            }
+            if (Jugador.nombre == "Mastropiero") 
+
+            {
+                StartCoroutine(AtaqueJugador(unidadJugador3));
+            }
+            if (Jugador.nombre == "Alfredo")
+
+            {
+                StartCoroutine(TurnoEnemigo());
+            }
+
         }
     }
     IEnumerator ComenzarBatalla()
@@ -146,13 +160,36 @@ public class SistemaBatalla : MonoBehaviour
     {
         dialogoTexto.text = unidadEnemigo.nombre + " ataca!";
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
-        bool muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
+        int decision = Random.Range(1, 4);
 
-        jugador1HUD.SetSalud(unidadJugador1.saludActual);
+        bool muerto;
 
-        yield return new WaitForSeconds(1f);
+        if (decision == 1)
+        {
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador1.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
+            jugador1HUD.SetSalud(unidadJugador1.saludActual);
+        }
+
+        else if (decision == 2)
+        {
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador2.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
+            jugador2HUD.SetSalud(unidadJugador2.saludActual);
+        }
+        else
+        {
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador3.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
+            jugador3HUD.SetSalud(unidadJugador3.saludActual);
+        }
+
+        
 
         if (muerto)
         {
@@ -186,6 +223,17 @@ public class SistemaBatalla : MonoBehaviour
     {
         if (state != EstadoBatalla.TURNOJUG)
             return;
-        StartCoroutine(AtaqueJugador());
+        StartCoroutine(AtaqueJugador(unidadJugador1));
+    }
+    public void Defenderboton(Unidad Jugador)
+    {
+        if (state != EstadoBatalla.TURNOJUG)
+            return;
+        Jugador.Bloqueando = true;
+        StartCoroutine(DefenderJugador());
+    }
+    IEnumerator DefenderJugador()
+    {
+              
     }
 }

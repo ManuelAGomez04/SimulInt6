@@ -6,13 +6,22 @@ public class Unidad : MonoBehaviour
 {
     public string nombre;
     public int nivelUnidad;
-    public int danio;
-    public int saludMaxima;
-    public int saludActual;
+    public float danio;
+    public float saludMaxima;
+    public float saludActual;
+    public bool Bloqueando;
 
-    public bool RecibirDanio(int danio)
+    public bool RecibirDanio(float danio)
     {
-        saludActual -= danio;
+        
+        if (Bloqueando)
+        {
+         saludActual -= danio / 1.5f;   
+        }
+        else       
+        {
+            saludActual -= danio;
+        }
 
         if (saludActual < -0)
             return true;

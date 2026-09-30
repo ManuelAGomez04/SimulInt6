@@ -354,9 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d672cb39b3a3e42921aca19c65e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Mastropiero
+  nombre: Alfredo
   nivelUnidad: 1
-  danio: 4
+  danio: 2
   saludMaxima: 60
   saludActual: 60
 --- !u!1 &32685709
@@ -2256,7 +2256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &801384003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3168,7 +3168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6461e1d38c5a3b34790672e766d56968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 2046529933}
+  gameOverUI: {fileID: 801384002}
 --- !u!4 &1133082701
 Transform:
   m_ObjectHideFlags: 0
@@ -4050,11 +4050,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d672cb39b3a3e42921aca19c65e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Alfredo
+  nombre: Mastropiero
   nivelUnidad: 1
-  danio: 2
-  saludMaxima: 50
-  saludActual: 50
+  danio: 4
+  saludMaxima: 65
+  saludActual: 65
 --- !u!1 &1596296787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4976,7 +4976,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Sofia
   nivelUnidad: 1
-  danio: 4
+  danio: 3
   saludMaxima: 60
   saludActual: 60
 --- !u!1 &1915264274
