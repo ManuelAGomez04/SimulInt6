@@ -13,6 +13,8 @@ public class SistemaBatalla : MonoBehaviour
     public GameObject jugadorPrefab3;
     public GameObject enemigoPrefab;
 
+   
+
     public Transform jugador1PosBatalla;
     public Transform jugador2PosBatalla;
     public Transform jugador3PosBatalla;
