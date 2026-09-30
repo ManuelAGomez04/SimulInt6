@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum EstadoBatalla{ COMIENZO, TURNOJUG, TURNOENEM, VICTORIA, DERROTA , ESPERANDO }
+public enum EstadoBatalla { COMIENZO, TURNOJUG, TURNOENEM, VICTORIA, DERROTA, ESPERANDO }
 
 public class SistemaBatalla : MonoBehaviour
 {
@@ -29,7 +29,7 @@ public class SistemaBatalla : MonoBehaviour
     public HUDBatalla jugador2HUD;
     public HUDBatalla jugador3HUD;
     public HUDBatalla enemigoHUD;
-    
+
     public Text dialogoTexto;
 
     public EstadoBatalla state;
@@ -114,11 +114,11 @@ public class SistemaBatalla : MonoBehaviour
         }
         else
         {
-           if (Jugador.nombre == "Sofia") 
+            if (Jugador.nombre == "Sofia")
             {
                 StartCoroutine(AtaqueJugador(unidadJugador2));
             }
-            if (Jugador.nombre == "Mastropiero") 
+            if (Jugador.nombre == "Mastropiero")
 
             {
                 StartCoroutine(AtaqueJugador(unidadJugador3));
@@ -155,7 +155,7 @@ public class SistemaBatalla : MonoBehaviour
         state = EstadoBatalla.TURNOJUG;
         TurnoJugador();
     }
-  
+
     IEnumerator TurnoEnemigo()
     {
         dialogoTexto.text = unidadEnemigo.nombre + " ataca!";
@@ -189,7 +189,7 @@ public class SistemaBatalla : MonoBehaviour
             jugador3HUD.SetSalud(unidadJugador3.saludActual);
         }
 
-        
+
 
         if (muerto)
         {
@@ -234,6 +234,6 @@ public class SistemaBatalla : MonoBehaviour
     }
     IEnumerator DefenderJugador()
     {
-              
+
     }
 }

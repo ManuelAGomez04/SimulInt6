@@ -359,6 +359,7 @@ MonoBehaviour:
   danio: 2
   saludMaxima: 60
   saludActual: 60
+  Bloqueando: 0
 --- !u!1 &32685709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,6 +1345,7 @@ MonoBehaviour:
   danio: 4
   saludMaxima: 110
   saludActual: 110
+  Bloqueando: 0
 --- !u!1 &506286328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1383,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 448.54, y: 104}
+  m_AnchoredPosition: {x: 453.04, y: 106.7}
   m_SizeDelta: {x: 225.93, y: 175.8581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506286330
@@ -1972,7 +1974,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -438.89, y: 291.91}
+  m_AnchoredPosition: {x: -443.39, y: 297.91}
   m_SizeDelta: {x: 245.2156, y: 106.1797}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662388539
@@ -3778,7 +3780,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -267.49, y: -241.64}
+  m_AnchoredPosition: {x: -271.99, y: -247.64}
   m_SizeDelta: {x: 588.0242, y: 206.7219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447935432
@@ -4055,6 +4057,7 @@ MonoBehaviour:
   danio: 4
   saludMaxima: 65
   saludActual: 65
+  Bloqueando: 0
 --- !u!1 &1596296787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,6 +4982,7 @@ MonoBehaviour:
   danio: 3
   saludMaxima: 60
   saludActual: 60
+  Bloqueando: 0
 --- !u!1 &1915264274
 GameObject:
   m_ObjectHideFlags: 0
@@ -5017,7 +5021,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 448.22, y: 73.5}
+  m_AnchoredPosition: {x: 453.03, y: 79.5}
   m_SizeDelta: {x: 225.9316, y: 543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915264276
