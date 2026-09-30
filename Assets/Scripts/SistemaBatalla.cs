@@ -12,8 +12,7 @@ public class SistemaBatalla : MonoBehaviour
     public GameObject jugadorPrefab2;
     public GameObject jugadorPrefab3;
     public GameObject enemigoPrefab;
-
-   
+    public GameManagerScript gameManager;
 
     public Transform jugador1PosBatalla;
     public Transform jugador2PosBatalla;
@@ -54,7 +53,6 @@ public class SistemaBatalla : MonoBehaviour
         if (esquivar <= 6)
         {
             //no hacemos nada
-
 
         }
         else if (esquivar <= 8)
@@ -174,6 +172,7 @@ public class SistemaBatalla : MonoBehaviour
         }
         else if (state == EstadoBatalla.DERROTA)
         {
+            gameManager.gameOver();
             dialogoTexto.text = "Derrota";
         }
     }
