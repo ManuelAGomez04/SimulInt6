@@ -21,4 +21,11 @@ public class GameManagerScript : MonoBehaviour
     {
         gameOverUI.SetActive(true);
     }
+
+    public GameObject JugadorGanador;
+
+        public void Ganador()
+    {
+        JugadorGanador.SetActive(true);
+    }
 }

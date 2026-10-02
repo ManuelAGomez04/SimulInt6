@@ -10,7 +10,20 @@ public class Unidad : MonoBehaviour
     public float saludMaxima;
     public float saludActual;
     public bool Bloqueando;
-
+    public float podermagico;
+    public float fuerza;
+    public void Start()
+    {
+        if (RecompenzaManager.Instance)
+        {
+            RecompenzaManager rm = RecompenzaManager.Instance;
+            if (rm.recompenza1 && nombre == "Sofia")
+            {
+                podermagico += 3;
+            }
+        }
+     
+    }
     public bool RecibirDanio(float danio)
     {
         

@@ -32,17 +32,21 @@ public class SistemaBatalla : MonoBehaviour
 
     public Text dialogoTexto;
 
+    public int indexJugador = 0;
+
     public EstadoBatalla state;
+    public bool muerto;
     void Start()
     {
         state = EstadoBatalla.COMIENZO;
         StartCoroutine(ComenzarBatalla());
     }
+    //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
         dialogoTexto.text = " !Le toca a " + Jugador.nombre;
         state = EstadoBatalla.ESPERANDO;
-        float danioFinal = Jugador.danio;
+        float danioFinal = Jugador.danio + Jugador.fuerza;
         int suerte = Random.Range(1, 5);
         int esquivar = Random.Range(1, 10);
         print("suerte:" + suerte.ToString());
@@ -102,7 +106,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
 
-        enemigoHUD.SetSalud(unidadEnemigo.saludActual);
+        enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
         dialogoTexto.text = "Ataque exitoso";
 
         yield return new WaitForSeconds(0.5f);
@@ -114,20 +118,8 @@ public class SistemaBatalla : MonoBehaviour
         }
         else
         {
-            if (Jugador.nombre == "Sofia")
-            {
-                StartCoroutine(AtaqueJugador(unidadJugador2));
-            }
-            if (Jugador.nombre == "Mastropiero")
-
-            {
-                StartCoroutine(AtaqueJugador(unidadJugador3));
-            }
-            if (Jugador.nombre == "Alfredo")
-
-            {
-                StartCoroutine(TurnoEnemigo());
-            }
+            state = EstadoBatalla.TURNOJUG;
+            TurnoJugador();
 
         }
     }
@@ -171,7 +163,7 @@ public class SistemaBatalla : MonoBehaviour
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador1.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
-            jugador1HUD.SetSalud(unidadJugador1.saludActual);
+            jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
         }
 
         else if (decision == 2)
@@ -179,14 +171,14 @@ public class SistemaBatalla : MonoBehaviour
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador2.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
-            jugador2HUD.SetSalud(unidadJugador2.saludActual);
+            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;  
         }
         else
         {
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador3.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
-            jugador3HUD.SetSalud(unidadJugador3.saludActual);
+            jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
         }
 
 
@@ -199,6 +191,7 @@ public class SistemaBatalla : MonoBehaviour
         else
         {
             state = EstadoBatalla.TURNOJUG;
+            indexJugador = 0;
             TurnoJugador();
         }
     }
@@ -206,7 +199,14 @@ public class SistemaBatalla : MonoBehaviour
     {
         if (state == EstadoBatalla.VICTORIA)
         {
-            dialogoTexto.text = "¡Victoria!";
+            gameManager.Ganador();
+            if (RecompenzaManager.Instance)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.dinero += 27;
+
+            }
+            dialogoTexto.text = "Ganaste 27 de Oro!";
         }
         else if (state == EstadoBatalla.DERROTA && !isDead)
         {
@@ -217,23 +217,168 @@ public class SistemaBatalla : MonoBehaviour
     }
     void TurnoJugador()
     {
-        dialogoTexto.text = "Tu turno";
+        indexJugador++;
+
+
+        if (indexJugador == 4)
+        {
+
+            StartCoroutine(TurnoEnemigo());
+
+        }
+        else
+        {
+
+            dialogoTexto.text = "Tu turno";
+        }
+
     }
     public void AtaqueBoton()
     {
         if (state != EstadoBatalla.TURNOJUG)
             return;
-        StartCoroutine(AtaqueJugador(unidadJugador1));
+
+        if (indexJugador == 1)
+        {
+
+
+            StartCoroutine(AtaqueJugador(unidadJugador1));
+
+        }
+        if (indexJugador == 2)
+        {
+
+
+            StartCoroutine(AtaqueJugador(unidadJugador2));
+
+        }
+
+        if (indexJugador == 3)
+        {
+
+
+            StartCoroutine(AtaqueJugador(unidadJugador3));
+
+        }
+
+
+
+
     }
-    public void Defenderboton(Unidad Jugador)
+    public void Defenderboton()
     {
         if (state != EstadoBatalla.TURNOJUG)
             return;
-        Jugador.Bloqueando = true;
-        StartCoroutine(DefenderJugador());
+
+        if (indexJugador == 1)
+        {
+
+
+            StartCoroutine(DefenderJugador(unidadJugador1));
+
+        }
+        if (indexJugador == 2)
+        {
+
+
+            StartCoroutine(DefenderJugador(unidadJugador2));
+
+        }
+
+        if (indexJugador == 3)
+        {
+
+
+            StartCoroutine(DefenderJugador(unidadJugador3));
+
+        }
     }
-    IEnumerator DefenderJugador()
+    IEnumerator DefenderJugador(Unidad Jugador)
     {
+        dialogoTexto.text = Jugador.nombre + " se defiende!";
+        state = EstadoBatalla.ESPERANDO;
+        yield return new WaitForSeconds(0.5f);
+        Jugador.Bloqueando = true;
+
+
+
+        
+        if (muerto)
+        {
+            state = EstadoBatalla.VICTORIA;
+            TerminarBatalla();
+        }
+        else
+        {
+            state = EstadoBatalla.TURNOJUG;
+            TurnoJugador();
+
+        }
+
+
+   
+    
+    }
+    public void Curarboton()
+    {
+        if (state != EstadoBatalla.TURNOJUG)
+            return;
+
+        if (indexJugador == 1)
+        {
+
+
+            StartCoroutine(CurarJugador(unidadJugador1));
+
+        }
+        if (indexJugador == 2)
+        {
+
+
+            StartCoroutine(CurarJugador(unidadJugador2));
+
+        }
+
+        if (indexJugador == 3)
+        {
+
+
+            StartCoroutine(CurarJugador(unidadJugador3));
+
+        }
+
+   
+    }
+
+     IEnumerator CurarJugador(Unidad Jugador)
+    {
+        dialogoTexto.text = Jugador.nombre + " ha curado!";
+        state = EstadoBatalla.ESPERANDO;
+        yield return new WaitForSeconds(0.5f);
+        if (unidadJugador1.saludActual < unidadJugador2.saludActual && unidadJugador1.saludActual < unidadJugador3.saludActual)
+        {
+            unidadJugador1.saludActual += Jugador.podermagico;
+            jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
+        }
+        else if (unidadJugador2.saludActual < unidadJugador1.saludActual && unidadJugador2.saludActual < unidadJugador3.saludActual)
+        {
+            unidadJugador2.saludActual += Jugador.podermagico;
+            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
+        }
+        else
+        {
+            unidadJugador3.saludActual += Jugador.podermagico;
+            jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
+        }
+
+
+
+
+       state = EstadoBatalla.TURNOJUG;
+        TurnoJugador();
+
+
+
 
     }
 }
