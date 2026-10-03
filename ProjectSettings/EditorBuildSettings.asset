@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Camino/Camino2.unity
     guid: 9f15afc47a82d6b4ea644eb7ca88c176
   - enabled: 1
-    path: Assets/Scenes/Peleas/GameFight2.unity
-    guid: 51688b9ba3ea764429104fbe1cc6cc2b
+    path: Assets/Scenes/Peleas/GameFight 1.unity
+    guid: cac784023041b4c498aa0c5883409db7
   - enabled: 1
     path: Assets/Scenes/Cofe/Cofre 1.unity
     guid: a75f7e428c4a7b548866bcdfd1a8ee6b
@@ -30,8 +30,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Camino/Camino3.unity
     guid: caf23d33f6523304a80e36b0a94e1542
   - enabled: 1
-    path: Assets/Scenes/Peleas/GameFight3.unity
-    guid: dbef7ea8a87f2d14abb51e5576e8e45a
+    path: Assets/Scenes/Peleas/GameFight 2.unity
+    guid: 6cd09db357c814f44b6f902c92aff8a0
   - enabled: 1
     path: Assets/Scenes/Cofe/Cofre 2.unity
     guid: 6470c72bfa6f9c442acd4abd45bf636c
@@ -39,8 +39,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Camino/Camino4.unity
     guid: dd00c4b17ed1e2d40b7bf5acb2ac728a
   - enabled: 1
-    path: Assets/Scenes/Peleas/GameFight4.unity
-    guid: b2537e392c2af874b8d47f16404f5ba5
+    path: Assets/Scenes/Peleas/GameFight 3.unity
+    guid: c10a2abe5247ade4fa9f1b164884d1a9
   - enabled: 1
     path: Assets/Scenes/VictoriaFinal.unity
     guid: 934bca326200da741b199defdfc75bd2

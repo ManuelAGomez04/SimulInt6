@@ -21,6 +21,15 @@ public class Unidad : MonoBehaviour
             {
                 podermagico += 3;
             }
+            if (rm.recompenza2 && nombre == "Mastropiero")
+            {
+                fuerza += 3;
+            }
+            if (rm.recompenza1 && nombre == "Alfredo")
+            {
+                saludMaxima += 15;
+                saludActual += 15;
+            }
         }
      
     }

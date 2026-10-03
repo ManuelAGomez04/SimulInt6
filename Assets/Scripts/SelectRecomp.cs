@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SelectRecomp : MonoBehaviour
 {
+   
     public int indice;
     void Start()
     {
@@ -34,8 +35,10 @@ public class SelectRecomp : MonoBehaviour
     }
     public void SeleccionarRecompensa()
     {
+        print(" Elija un Boton " + indice);
         if (RecompenzaManager.Instance)
         {
+            print("Seleccionaste la recompensa " + indice);
             RecompenzaManager rm = RecompenzaManager.Instance;
             if (indice == 1)
             {
@@ -49,7 +52,7 @@ public class SelectRecomp : MonoBehaviour
             {
                 rm.recompenza3 = true;
             }
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 }

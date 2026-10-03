@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,10 @@ public class SistemaBatalla : MonoBehaviour
     public GameObject enemigoPrefab;
     public GameManagerScript gameManager;
     public bool isDead;
+    public TextMeshProUGUI TextoVida1;
+    public TextMeshProUGUI TextoVida2;
+    public TextMeshProUGUI TextoVida3;
+    public TextMeshProUGUI TextoVidaEnemigo;
 
     public Transform jugador1PosBatalla;
     public Transform jugador2PosBatalla;
@@ -40,6 +45,11 @@ public class SistemaBatalla : MonoBehaviour
     {
         state = EstadoBatalla.COMIENZO;
         StartCoroutine(ComenzarBatalla());
+        TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
+        TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
+        TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
+        TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+
     }
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
@@ -108,6 +118,8 @@ public class SistemaBatalla : MonoBehaviour
 
         enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
         dialogoTexto.text = "Ataque exitoso";
+        TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+
 
         yield return new WaitForSeconds(0.5f);
 
@@ -164,6 +176,7 @@ public class SistemaBatalla : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
             jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
+            TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
         }
 
         else if (decision == 2)
@@ -171,7 +184,8 @@ public class SistemaBatalla : MonoBehaviour
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador2.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
-            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;  
+            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
+            TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
         }
         else
         {
@@ -179,6 +193,8 @@ public class SistemaBatalla : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             muerto = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
             jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
+            TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
+
         }
 
 
@@ -359,16 +375,19 @@ public class SistemaBatalla : MonoBehaviour
         {
             unidadJugador1.saludActual += Jugador.podermagico;
             jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
+            TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
         }
         else if (unidadJugador2.saludActual < unidadJugador1.saludActual && unidadJugador2.saludActual < unidadJugador3.saludActual)
         {
             unidadJugador2.saludActual += Jugador.podermagico;
             jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
+            TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
         }
         else
         {
             unidadJugador3.saludActual += Jugador.podermagico;
             jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
+            TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
         }
 
 
