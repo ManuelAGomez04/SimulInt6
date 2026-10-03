@@ -1421,14 +1421,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d672cb39b3a3e42921aca19c65e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Ogro
+  nombre: Orco
   nivelUnidad: 2
   danio: 4
-  saludMaxima: 110
-  saludActual: 110
+  saludMaxima: 80
+  saludActual: 80
   Bloqueando: 0
   podermagico: 1
-  fuerza: 3
+  fuerza: 4
 --- !u!1 &506286328
 GameObject:
   m_ObjectHideFlags: 0
