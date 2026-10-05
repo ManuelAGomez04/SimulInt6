@@ -1468,7 +1468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 453.04, y: 106.7}
+  m_AnchoredPosition: {x: 570.04, y: 130}
   m_SizeDelta: {x: 225.93, y: 175.8581}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506286330
@@ -2135,7 +2135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -431.24713, y: 285.76718}
+  m_AnchoredPosition: {x: -548.25, y: 318.77}
   m_SizeDelta: {x: 269.5014, y: 130.4654}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &662388539
@@ -4547,7 +4547,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 453.6892, y: -74.76587}
+  m_AnchoredPosition: {x: 569.88, y: -79.834}
   m_SizeDelta: {x: 225.64, y: 169.9317}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424262873
@@ -4642,7 +4642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271.99, y: -247.64}
+  m_AnchoredPosition: {x: -388.99, y: -280.64}
   m_SizeDelta: {x: 588.0242, y: 206.7219}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1447935432
@@ -6050,7 +6050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 453.03, y: 79.5}
+  m_AnchoredPosition: {x: 570.04, y: 112.5}
   m_SizeDelta: {x: 225.9316, y: 543}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915264276
@@ -6184,8 +6184,8 @@ Transform:
   m_GameObject: {fileID: 1945840780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0295, y: -0.0255, z: 0}
-  m_LocalScale: {x: 1.1056015, y: 0.93912035, z: 1}
+  m_LocalPosition: {x: -0.015, y: -0.0255, z: 0}
+  m_LocalScale: {x: 0.9226956, y: 0.93912035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
