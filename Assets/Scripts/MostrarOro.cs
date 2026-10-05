@@ -12,7 +12,7 @@ public class MostrarOro : MonoBehaviour
         if (RecompenzaManager.Instance)
         {
             RecompenzaManager rm = RecompenzaManager.Instance;
-           texto.text = "Oro: " + rm.dinero.ToString();
+           texto.text = "Pesoros: " + rm.dinero.ToString();
 
         }
     }
