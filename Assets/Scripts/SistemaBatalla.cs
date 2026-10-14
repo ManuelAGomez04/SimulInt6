@@ -41,6 +41,8 @@ public class SistemaBatalla : MonoBehaviour
 
     public EstadoBatalla state;
     public bool muerto;
+    public List <string> patronAtaquesEnemigo;
+    public int indexPatron;
     void Start()
     {
         state = EstadoBatalla.COMIENZO;
@@ -160,15 +162,70 @@ public class SistemaBatalla : MonoBehaviour
         TurnoJugador();
     }
 
+    public Unidad seleccionarJugadorAzar()
+    {
+        int decision = Random.Range(1, 4);
+
+
+        if (decision == 1)
+        {
+            return unidadJugador1;
+        }
+
+        else if (decision == 2)
+        {
+            return unidadJugador2;
+        }
+        else
+        {
+            return unidadJugador3;
+
+        }
+    }
     IEnumerator TurnoEnemigo()
     {
         dialogoTexto.text = unidadEnemigo.nombre + " ataca!";
+
+        bool muerto;
+
+        if (patronAtaquesEnemigo[indexPatron] == "Ataque básico")
+        {
+            Unidad pj = seleccionarJugadorAzar();
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            jugador1HUD.vidaSlider.value = pj.saludActual;
+            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Ataque grande")
+        {
+            Unidad pj = seleccionarJugadorAzar();
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2);
+            jugador1HUD.vidaSlider.value = pj.saludActual;
+            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Ataque aturdidor")
+        {
+            Unidad pj = seleccionarJugadorAzar();
+            dialogoTexto.text = unidadEnemigo.nombre + " aturde a " + pj.nombre;
+            yield return new WaitForSeconds(0.5f);
+            pj.stunRestante += 3;
+            jugador1HUD.vidaSlider.value = pj.saludActual;
+            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+        }
+
+
+
+
+
 
         yield return new WaitForSeconds(0.5f);
 
         int decision = Random.Range(1, 4);
 
-        bool muerto;
+        
 
         if (decision == 1)
         {
@@ -234,7 +291,24 @@ public class SistemaBatalla : MonoBehaviour
     void TurnoJugador()
     {
         indexJugador++;
-
+        if (indexJugador == 1 && unidadJugador1.stunRestante > 0)
+        {
+            dialogoTexto.text = "Sofía está inmovilizada.";
+            unidadJugador1.stunRestante--;
+            indexJugador++;
+        }
+        if (indexJugador == 2 && unidadJugador2.stunRestante > 0)
+        {
+            dialogoTexto.text = "Mastropiero está inmovilizado.";
+            unidadJugador2.stunRestante--;
+            indexJugador++;
+        }
+        if (indexJugador == 3 && unidadJugador3.stunRestante > 0)
+        {
+            dialogoTexto.text = "Alfredo está inmovilizado.";
+            unidadJugador3.stunRestante--;
+            indexJugador++;
+        }
 
         if (indexJugador == 4)
         {
@@ -399,5 +473,17 @@ public class SistemaBatalla : MonoBehaviour
 
 
 
+    }
+    //1)Enemigos detectan debilidad de jugador,
+    //enemigo tiene mas probabilidad de atacar a jugador que sea debil a
+    //tipo de ataque del enemigo
+
+    //Golpe aturdidor o stun, tanto enemigo como jjugador lo pueden hacer, el objetivo no puede atacar por varios turnos
+    //el jugador tiiene la habilidad de salir del stun con un boton.
+
+    //Postura: mecanica, 
+    IEnumerator Enemigo1() 
+    {
+        yield return null;
     }
 }

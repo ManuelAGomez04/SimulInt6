@@ -12,6 +12,7 @@ public class Unidad : MonoBehaviour
     public bool Bloqueando;
     public float podermagico;
     public float fuerza;
+    public int stunRestante;
     public void Start()
     {
         if (RecompenzaManager.Instance)
