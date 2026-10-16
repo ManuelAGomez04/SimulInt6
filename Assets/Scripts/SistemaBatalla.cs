@@ -19,6 +19,7 @@ public class SistemaBatalla : MonoBehaviour
     public TextMeshProUGUI TextoVida2;
     public TextMeshProUGUI TextoVida3;
     public TextMeshProUGUI TextoVidaEnemigo;
+    public TMP_Dropdown dropdownAtaques;
 
     public Transform jugador1PosBatalla;
     public Transform jugador2PosBatalla;
@@ -56,6 +57,31 @@ public class SistemaBatalla : MonoBehaviour
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
+      dropdownAtaques.ClearOptions();
+        for (int i = 0; i < Jugador.habilidades.Count; i++)
+        {
+            dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = Jugador.habilidades[i] });
+        }
+        dropdownAtaques.onValueChanged
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ///
         dialogoTexto.text = " !Le toca a " + Jugador.nombre;
         state = EstadoBatalla.ESPERANDO;
         float danioFinal = Jugador.danio + Jugador.fuerza;
@@ -109,15 +135,6 @@ public class SistemaBatalla : MonoBehaviour
         //0 no acertaste
         //1 a 5 normal
         //6 critico
-
-
-
-
-
-
-
-
-
         enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
         dialogoTexto.text = "Ataque exitoso";
         TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -165,7 +182,7 @@ public class SistemaBatalla : MonoBehaviour
     public Unidad seleccionarJugadorAzar()
     {
         int decision = Random.Range(1, 4);
-
+        print("decision: " + decision.ToString());
 
         if (decision == 1)
         {
@@ -182,78 +199,81 @@ public class SistemaBatalla : MonoBehaviour
 
         }
     }
-    IEnumerator TurnoEnemigo()
+    public HUDBatalla seleccionarHud(Unidad unidad)
+        {
+        if (unidad == unidadJugador1)
+        {
+            return jugador1HUD;
+        }
+        else if (unidad == unidadJugador2)
+        {
+            return jugador2HUD;
+        }
+        else 
+        {
+            return jugador3HUD;
+        }
+    }
+    public TextMeshProUGUI seleccionarTexto(Unidad unidad)
     {
-        dialogoTexto.text = unidadEnemigo.nombre + " ataca!";
+        if (unidad == unidadJugador1)
+        {
+            return TextoVida1;
+        }
+        else if (unidad == unidadJugador2)
+        {
+            return TextoVida2;
+        }
+        else
+        {
+            return TextoVida3;
+        }
+    }
+    IEnumerator TurnoEnemigo()
+    { 
 
-        bool muerto;
+
+        bool muerto = false;
 
         if (patronAtaquesEnemigo[indexPatron] == "Ataque básico")
         {
             Unidad pj = seleccionarJugadorAzar();
+            HUDBatalla hud = seleccionarHud(pj);
+            TextMeshProUGUI texto = seleccionarTexto(pj);
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = pj.RecibirDanio(unidadEnemigo.danio);
-            jugador1HUD.vidaSlider.value = pj.saludActual;
-            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
-        }
+            hud.vidaSlider.value = pj.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+        } 
         if (patronAtaquesEnemigo[indexPatron] == "Ataque grande")
         {
             Unidad pj = seleccionarJugadorAzar();
+            HUDBatalla hud = seleccionarHud(pj);
+            TextMeshProUGUI texto = seleccionarTexto(pj);
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = pj.RecibirDanio(unidadEnemigo.danio * 2);
-            jugador1HUD.vidaSlider.value = pj.saludActual;
-            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+            hud.vidaSlider.value = pj.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
         }
         if (patronAtaquesEnemigo[indexPatron] == "Ataque aturdidor")
         {
             Unidad pj = seleccionarJugadorAzar();
+            HUDBatalla hud = seleccionarHud(pj);
+            TextMeshProUGUI texto = seleccionarTexto(pj);
             dialogoTexto.text = unidadEnemigo.nombre + " aturde a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             pj.stunRestante += 3;
-            jugador1HUD.vidaSlider.value = pj.saludActual;
-            TextoVida1.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+            hud.vidaSlider.value = pj.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
         }
-
-
-
-
-
-
-        yield return new WaitForSeconds(0.5f);
-
-        int decision = Random.Range(1, 4);
-
-        
-
-        if (decision == 1)
+        indexPatron++; 
+        if (indexPatron >= patronAtaquesEnemigo.Count)
         {
-            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador1.nombre;
-            yield return new WaitForSeconds(0.5f);
-            muerto = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
-            jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
-            TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
+            indexPatron = 0; 
         }
-
-        else if (decision == 2)
-        {
-            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador2.nombre;
-            yield return new WaitForSeconds(0.5f);
-            muerto = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
-            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
-            TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
-        }
-        else
-        {
-            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + unidadJugador3.nombre;
-            yield return new WaitForSeconds(0.5f);
-            muerto = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
-            jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
-            TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
-
-        }
-
 
 
         if (muerto)
@@ -442,6 +462,7 @@ public class SistemaBatalla : MonoBehaviour
 
      IEnumerator CurarJugador(Unidad Jugador)
     {
+        print("Curando a " + Jugador.nombre);
         dialogoTexto.text = Jugador.nombre + " ha curado!";
         state = EstadoBatalla.ESPERANDO;
         yield return new WaitForSeconds(0.5f);

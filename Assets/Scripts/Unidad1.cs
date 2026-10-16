@@ -13,6 +13,7 @@ public class Unidad : MonoBehaviour
     public float podermagico;
     public float fuerza;
     public int stunRestante;
+    public List<string> habilidades = new List<string>();
     public void Start()
     {
         if (RecompenzaManager.Instance)
