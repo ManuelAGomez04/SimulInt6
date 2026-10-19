@@ -47,7 +47,7 @@ public class Unidad : MonoBehaviour
             saludActual -= danio;
         }
 
-        if (saludActual < -0)
+        if (saludActual <= -0)
             return true;
         else
             return false;

@@ -363,7 +363,8 @@ MonoBehaviour:
   podermagico: 4
   fuerza: 0
   stunRestante: 0
-  habilidades: []
+  habilidades:
+  - "Ataque b\xE1sico"
 --- !u!1 &32685709
 GameObject:
   m_ObjectHideFlags: 0
@@ -5868,7 +5869,9 @@ MonoBehaviour:
   podermagico: 1
   fuerza: 0
   stunRestante: 0
-  habilidades: []
+  habilidades:
+  - "Ataque b\xE1sico"
+  - Ataque Aturdidor
 --- !u!1 &1545807701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5882,12 +5885,12 @@ GameObject:
   - component: {fileID: 1545807704}
   - component: {fileID: 1545807703}
   m_Layer: 5
-  m_Name: Ataque
+  m_Name: DBox-Ataque
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1545807702
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5907,7 +5910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65.9, y: -87}
+  m_AnchoredPosition: {x: 181, y: -178}
   m_SizeDelta: {x: 324.9872, y: 79.1125}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545807703
@@ -7098,7 +7101,8 @@ MonoBehaviour:
   podermagico: 2
   fuerza: 0
   stunRestante: 0
-  habilidades: []
+  habilidades:
+  - "Ataque b\xE1sico"
 --- !u!1 &1915264274
 GameObject:
   m_ObjectHideFlags: 0

@@ -57,12 +57,53 @@ public class SistemaBatalla : MonoBehaviour
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
-      dropdownAtaques.ClearOptions();
+        dialogoTexto.text = " !Le toca a " + Jugador.nombre;
+        state = EstadoBatalla.ESPERANDO;
+        dropdownAtaques.ClearOptions();
+        dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = "Elegir una opción" });
+        dropdownAtaques.gameObject.SetActive(true);
         for (int i = 0; i < Jugador.habilidades.Count; i++)
         {
             dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = Jugador.habilidades[i] });
         }
-        dropdownAtaques.onValueChanged
+        bool muerto = false;    
+        dropdownAtaques.onValueChanged.AddListener((index) =>
+        {
+            if (dropdownAtaques.options[index].text == "Ataque básico")
+            {
+
+                dialogoTexto.text = Jugador.nombre + " ataca a " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+
+            }
+
+            if (dropdownAtaques.options[index].text == "Ataque Aturdidor")
+            {
+
+                dialogoTexto.text = Jugador.nombre + " ataca a " + unidadEnemigo.nombre;
+                unidadEnemigo.stunRestante += 2;
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+
+            }
+
+            dropdownAtaques.gameObject.SetActive(false);
+            if (muerto)
+            {
+                state = EstadoBatalla.VICTORIA;
+                TerminarBatalla();
+            }
+            else
+            {
+                state = EstadoBatalla.TURNOJUG;
+                TurnoJugador();
+
+            }
+            dropdownAtaques.onValueChanged.RemoveAllListeners(); // Remove the listener after selection
+        }
+        );
 
 
 
@@ -81,9 +122,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
 
-        ///
-        dialogoTexto.text = " !Le toca a " + Jugador.nombre;
-        state = EstadoBatalla.ESPERANDO;
+        //
         float danioFinal = Jugador.danio + Jugador.fuerza;
         int suerte = Random.Range(1, 5);
         int esquivar = Random.Range(1, 10);
@@ -128,31 +167,16 @@ public class SistemaBatalla : MonoBehaviour
 
 
 
-        bool muerto = unidadEnemigo.RecibirDanio(danioFinal);
+       
 
 
         //suerte
         //0 no acertaste
         //1 a 5 normal
         //6 critico
-        enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
-        dialogoTexto.text = "Ataque exitoso";
-        TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
-
-
+       
         yield return new WaitForSeconds(0.5f);
 
-        if (muerto)
-        {
-            state = EstadoBatalla.VICTORIA;
-            TerminarBatalla();
-        }
-        else
-        {
-            state = EstadoBatalla.TURNOJUG;
-            TurnoJugador();
-
-        }
     }
     IEnumerator ComenzarBatalla()
     {
@@ -332,8 +356,20 @@ public class SistemaBatalla : MonoBehaviour
 
         if (indexJugador == 4)
         {
+            if (unidadEnemigo.stunRestante > 0)
+            {
+                dialogoTexto.text = unidadEnemigo.nombre + " está inmovilizado.";
+                unidadEnemigo.stunRestante--;
+                state = EstadoBatalla.TURNOJUG;
+                indexJugador = 0;
+                TurnoJugador();
 
-            StartCoroutine(TurnoEnemigo());
+            }
+            else
+            {
+                StartCoroutine(TurnoEnemigo());
+            }
+           
 
         }
         else
@@ -376,7 +412,9 @@ public class SistemaBatalla : MonoBehaviour
 
     }
     public void Defenderboton()
+
     {
+        dropdownAtaques.gameObject.SetActive(false);
         if (state != EstadoBatalla.TURNOJUG)
             return;
 
@@ -431,6 +469,7 @@ public class SistemaBatalla : MonoBehaviour
     }
     public void Curarboton()
     {
+        dropdownAtaques.gameObject.SetActive(false);
         if (state != EstadoBatalla.TURNOJUG)
             return;
 
