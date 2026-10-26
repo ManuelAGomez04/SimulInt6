@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Unidad : MonoBehaviour
@@ -13,6 +14,9 @@ public class Unidad : MonoBehaviour
     public float podermagico;
     public float fuerza;
     public int stunRestante;
+    public int mana;
+    public int manaMaximo;
+    public List<string> listaCD = new List<string>();
     public List<string> habilidades = new List<string>();
     public void Start()
     {
@@ -51,5 +55,43 @@ public class Unidad : MonoBehaviour
             return true;
         else
             return false;
+    }
+    public void AgregarCD(string habilidad,int n = 1)
+    {
+        
+        for (int i = 0; i < n; i++)
+        {
+            listaCD.Add(habilidad);
+        }
+    }
+    public void QuitarCD()
+    {
+        List<string> listaUnicos = listaCD.Distinct().ToList();
+        HashSet<string> elementosVistos = new HashSet<string>();
+
+        for (int i = 0; i < listaCD.Count; i++)
+        {
+
+            if (!elementosVistos.Add(listaCD[i]))
+            {
+                listaCD.RemoveAt(i);
+                break;
+            }
+        }
+    }
+    public bool chequearCD(string habilidad)
+    {
+        if (listaCD.Contains(habilidad))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public void PasoTurno()
+    {
+        QuitarCD();
     }
 }

@@ -79,14 +79,25 @@ public class SistemaBatalla : MonoBehaviour
 
             }
 
-            if (dropdownAtaques.options[index].text == "Ataque Aturdidor")
+            if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.mana >= 7 && Jugador.chequearCD("Ataque Aturdidor") == false) 
             {
 
                 dialogoTexto.text = Jugador.nombre + " ataca a " + unidadEnemigo.nombre;
                 unidadEnemigo.stunRestante += 2;
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
-
+                Jugador.mana -= 7;  
+                Jugador.AgregarCD("Ataque Aturdidor", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return; 
+            }
+            else if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.chequearCD("Ataque Aturdidor") == true)
+            {
+                dialogoTexto.text = "Recuperando Habilidad.";
+                return;
             }
 
             dropdownAtaques.gameObject.SetActive(false);
@@ -335,6 +346,36 @@ public class SistemaBatalla : MonoBehaviour
     void TurnoJugador()
     {
         indexJugador++;
+
+        if (indexJugador == 1)
+        {
+            unidadJugador1.PasoTurno();
+        }
+        if (indexJugador == 2)
+        {
+            unidadJugador2.PasoTurno();
+        }
+        if (indexJugador == 3)
+        {
+            unidadJugador3.PasoTurno();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         if (indexJugador == 1 && unidadJugador1.stunRestante > 0)
         {
             dialogoTexto.text = "Sofía está inmovilizada.";
