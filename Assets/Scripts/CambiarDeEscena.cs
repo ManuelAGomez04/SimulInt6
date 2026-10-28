@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CambiarDeEscena : MonoBehaviour
     
 {
     public int escenaIndex;
-
+    public TextMeshPro text; 
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,14 @@ public class CambiarDeEscena : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
+        text.gameObject.SetActive(true);
         if (Input.GetKeyDown(KeyCode.E)) 
         { 
         CambiarEscena();  
         }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        text.gameObject.SetActive(false);
     }
 }

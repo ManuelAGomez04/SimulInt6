@@ -57,6 +57,7 @@ public class SistemaBatalla : MonoBehaviour
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
+        
         dialogoTexto.text = " !Le toca a " + Jugador.nombre;
         state = EstadoBatalla.ESPERANDO;
         dropdownAtaques.ClearOptions();
@@ -67,6 +68,7 @@ public class SistemaBatalla : MonoBehaviour
             dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = Jugador.habilidades[i] });
         }
         bool muerto = false;    
+ 
         dropdownAtaques.onValueChanged.AddListener((index) =>
         {
             if (dropdownAtaques.options[index].text == "Ataque básico")
@@ -78,29 +80,74 @@ public class SistemaBatalla : MonoBehaviour
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
 
             }
+            //Inicia Aumento
+            if (dropdownAtaques.options[index].text == "Aumento" && Jugador.mana >= 5 && Jugador.chequearCD("Aumento") == false) 
+            {
 
-            if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.mana >= 7 && Jugador.chequearCD("Ataque Aturdidor") == false) 
+                dialogoTexto.text = Jugador.nombre + " ´¡La fuerza de " + Jugador.nombre + " aumenta!";
+                Jugador.fuerza += 2;
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;  
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Aumento", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Aumento" && Jugador.mana < 5)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return; 
+            }
+            else if (dropdownAtaques.options[index].text == "Aumento" && Jugador.chequearCD("Aumento") == true)
+            {
+                dialogoTexto.text = "Recuperando Habilidad.";
+                return;
+            }
+            //Fin Aumento
+            //Inicia Ataque
+            if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.mana >= 7 && Jugador.chequearCD("Ataque Aturdidor") == false)
             {
 
                 dialogoTexto.text = Jugador.nombre + " ataca a " + unidadEnemigo.nombre;
                 unidadEnemigo.stunRestante += 2;
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
-                Jugador.mana -= 7;  
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 7;
+                hud.SetMana(Jugador.mana);
                 Jugador.AgregarCD("Ataque Aturdidor", 2);
             }
             else if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.mana < 7)
             {
                 dialogoTexto.text = "Maná Insuficiente.";
-                return; 
+                return;
             }
             else if (dropdownAtaques.options[index].text == "Ataque Aturdidor" && Jugador.chequearCD("Ataque Aturdidor") == true)
             {
                 dialogoTexto.text = "Recuperando Habilidad.";
                 return;
             }
+            //Fin Ataque 
+            //Magia 
+            if (dropdownAtaques.options[index].text == "Bru" && Jugador.mana >= 5 && Jugador.chequearCD("Bru") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Lanza llamas a " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Bru", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Bru" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+           
 
             dropdownAtaques.gameObject.SetActive(false);
+            
             if (muerto)
             {
                 state = EstadoBatalla.VICTORIA;
