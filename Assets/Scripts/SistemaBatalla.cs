@@ -144,8 +144,143 @@ public class SistemaBatalla : MonoBehaviour
                 dialogoTexto.text = "Maná Insuficiente.";
                 return;
             }
-           
 
+            if (dropdownAtaques.options[index].text == "Chio" && Jugador.mana >= 5 && Jugador.chequearCD("Chio") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Congela a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Chio", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Chio" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Ful" && Jugador.mana >= 5 && Jugador.chequearCD("Ful") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Truena a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Ful", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Ful" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Rea" && Jugador.mana >= 5 && Jugador.chequearCD("Rea") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Entierra a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Rea", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Rea" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Nero" && Jugador.mana >= 5 && Jugador.chequearCD("Nero") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Inunda a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Nero", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Nero" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Aze" && Jugador.mana >= 5 && Jugador.chequearCD("Aze") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Vuela a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Aze", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Aze" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Dyo" && Jugador.mana >= 5 && Jugador.chequearCD("Dyo") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Ilumina a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Dyo", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Dyo" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Kata" && Jugador.mana >= 5 && Jugador.chequearCD("Kata") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Oscurece a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Kata", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Kata" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
+            if (dropdownAtaques.options[index].text == "Agni" && Jugador.mana >= 5 && Jugador.chequearCD("Agni") == false)
+            {
+
+                dialogoTexto.text = Jugador.nombre + " Detona a  " + unidadEnemigo.nombre;
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
+                TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+                HUDBatalla hud = seleccionarHud(Jugador);
+                Jugador.mana -= 5;
+                hud.SetMana(Jugador.mana);
+                Jugador.AgregarCD("Agni", 2);
+            }
+            else if (dropdownAtaques.options[index].text == "Agni" && Jugador.mana < 7)
+            {
+                dialogoTexto.text = "Maná Insuficiente.";
+                return;
+            }
             dropdownAtaques.gameObject.SetActive(false);
             
             if (muerto)
