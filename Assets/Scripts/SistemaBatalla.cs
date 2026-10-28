@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -315,10 +316,10 @@ public class SistemaBatalla : MonoBehaviour
 
 
 
-        //
+        
         float danioFinal = Jugador.danio + Jugador.fuerza;
-        int suerte = Random.Range(1, 5);
-        int esquivar = Random.Range(1, 10);
+        int suerte = UnityEngine.Random.Range(1, 5);
+        int esquivar = UnityEngine.Random.Range(1, 10);
         print("suerte:" + suerte.ToString());
         print("esquivar:" + esquivar.ToString());
 
@@ -398,7 +399,7 @@ public class SistemaBatalla : MonoBehaviour
 
     public Unidad seleccionarJugadorAzar()
     {
-        int decision = Random.Range(1, 4);
+        int decision = UnityEngine.Random.Range(1, 4);
         print("decision: " + decision.ToString());
 
         if (decision == 1)
@@ -451,12 +452,12 @@ public class SistemaBatalla : MonoBehaviour
 
 
         bool muerto = false;
-
+        Unidad pj = seleccionarJugadorAzar();
+        HUDBatalla hud = seleccionarHud(pj);
+        TextMeshProUGUI texto = seleccionarTexto(pj);
         if (patronAtaquesEnemigo[indexPatron] == "Ataque básico")
         {
-            Unidad pj = seleccionarJugadorAzar();
-            HUDBatalla hud = seleccionarHud(pj);
-            TextMeshProUGUI texto = seleccionarTexto(pj);
+            
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = pj.RecibirDanio(unidadEnemigo.danio);
@@ -466,9 +467,7 @@ public class SistemaBatalla : MonoBehaviour
         } 
         if (patronAtaquesEnemigo[indexPatron] == "Ataque grande")
         {
-            Unidad pj = seleccionarJugadorAzar();
-            HUDBatalla hud = seleccionarHud(pj);
-            TextMeshProUGUI texto = seleccionarTexto(pj);
+            
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             muerto = pj.RecibirDanio(unidadEnemigo.danio * 2);
@@ -477,15 +476,189 @@ public class SistemaBatalla : MonoBehaviour
         }
         if (patronAtaquesEnemigo[indexPatron] == "Ataque aturdidor")
         {
-            Unidad pj = seleccionarJugadorAzar();
-            HUDBatalla hud = seleccionarHud(pj);
-            TextMeshProUGUI texto = seleccionarTexto(pj);
+            
             dialogoTexto.text = unidadEnemigo.nombre + " aturde a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
             pj.stunRestante += 3;
             hud.vidaSlider.value = pj.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
         }
+        if (patronAtaquesEnemigo[indexPatron] == "Lluvia de Flechas")
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " LLueven flechas sobre el grupo ";
+            yield return new WaitForSeconds(0.5f);
+            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
+            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
+            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
+            jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
+            jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
+            jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
+            TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
+            TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
+            TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
+            if (muerto1 || muerto2 || muerto3)
+            {
+                muerto = true;
+            }
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Bru" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Bru") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Lanza llamas a " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Bru", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Bru" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+
+        if (patronAtaquesEnemigo[indexPatron] == "Chio" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Chio") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Congela a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Chio", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Chio" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Ful" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Ful") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Truena a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Ful", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Ful" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Rea" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Rea") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Entierra a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Rea", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Rea" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Nero" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Nero") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Inunda a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Nero", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Nero" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Aze" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Aze") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Vuela a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Aze", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Aze" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Dyo" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Dyo") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Ilumina a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Dyo", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Dyo" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Kata" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Kata") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Oscurece a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Kata", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Kata" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Agni" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Agni") == false)
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Detona a  " + pj.nombre;
+            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            hud.vidaSlider.value = unidadEnemigo.saludActual;
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+
+            unidadEnemigo.mana -= 5;
+            enemigoHUD.SetMana(unidadEnemigo.mana);
+            unidadEnemigo.AgregarCD("Agni", 2);
+        }
+        else if (patronAtaquesEnemigo[indexPatron] == "Agni" && unidadEnemigo.mana < 7)
+        {
+            dialogoTexto.text = "Maná Insuficiente.";
+
+        }
+
+
+
         indexPatron++; 
         if (indexPatron >= patronAtaquesEnemigo.Count)
         {
