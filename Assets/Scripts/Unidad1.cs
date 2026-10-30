@@ -18,6 +18,16 @@ public class Unidad : MonoBehaviour
     public int manaMaximo;
     public List<string> listaCD = new List<string>();
     public List<string> habilidades = new List<string>();
+    public float DebilidadFisica;
+    public float DebilidadFuego;
+    public float DebilidadHielo;
+    public float DebilidadRayo;
+    public float DebilidadTierra;
+    public float DebilidadAgua;
+    public float DebilidadViento;
+    public float DebilidadBalance;
+    public float DebilidadCaos;
+
     public void Start()
     {
         if (RecompenzaManager.Instance)
@@ -39,9 +49,46 @@ public class Unidad : MonoBehaviour
         }
      
     }
-    public bool RecibirDanio(float danio)
+    public bool RecibirDanio(float danio,string tipo = "" )
+
     {
-        
+        if (tipo == "Fisico")
+        {
+            danio *= DebilidadFisica;
+        }
+        else if (tipo == "Fuego")
+        {
+            danio *= DebilidadFuego;
+        }
+        else if (tipo == "Hielo")
+        {
+            danio *= DebilidadHielo;
+        }
+        else if (tipo == "Rayo")
+        {
+            danio *= DebilidadRayo;
+        }
+        else if (tipo == "Tierra")
+        {
+            danio *= DebilidadTierra;
+        }
+        else if (tipo == "Agua")
+        {
+            danio *= DebilidadAgua;
+        }
+        else if (tipo == "Viento")
+        {
+            danio *= DebilidadViento;
+        }
+        else if (tipo == "Balance")
+        {
+            danio *= DebilidadBalance;
+        }
+        else if (tipo == "Caos")
+        {
+            danio *= DebilidadCaos;
+        }
+
         if (Bloqueando)
         {
          saludActual -= danio / 1.5f;   
@@ -50,7 +97,7 @@ public class Unidad : MonoBehaviour
         {
             saludActual -= danio;
         }
-
+        Bloqueando = false; 
         if (saludActual <= -0)
             return true;
         else

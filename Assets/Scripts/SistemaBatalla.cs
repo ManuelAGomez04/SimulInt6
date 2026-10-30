@@ -45,6 +45,7 @@ public class SistemaBatalla : MonoBehaviour
     public bool muerto;
     public List <string> patronAtaquesEnemigo;
     public int indexPatron;
+    public float TiempoDeEspera = 1f;
     void Start()
     {
         state = EstadoBatalla.COMIENZO;
@@ -58,8 +59,7 @@ public class SistemaBatalla : MonoBehaviour
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
     {
-        
-        dialogoTexto.text = " !Le toca a " + Jugador.nombre;
+       
         state = EstadoBatalla.ESPERANDO;
         dropdownAtaques.ClearOptions();
         dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = "Elegir una opción" });
@@ -76,7 +76,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " ataca a " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Fisico");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Fisico"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
 
@@ -132,7 +133,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Lanza llamas a " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Fuego");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Fuego"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -150,7 +152,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Congela a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Hielo");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Hielo"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -167,7 +170,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Truena a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Rayo");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Rayo"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -184,7 +188,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Entierra a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Tierra");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Tierra"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -201,7 +206,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Inunda a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Agua");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Agua"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -218,7 +224,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Vuela a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Viento");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Viento"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -235,7 +242,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Ilumina a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Balance");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Balance"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -252,7 +260,8 @@ public class SistemaBatalla : MonoBehaviour
             {
 
                 dialogoTexto.text = Jugador.nombre + " Oscurece a  " + unidadEnemigo.nombre;
-                muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+                muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Caos");
+                StartCoroutine(ChequearResistencias(unidadEnemigo, "Caos"));
                 enemigoHUD.vidaSlider.value = unidadEnemigo.saludActual;
                 TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
                 HUDBatalla hud = seleccionarHud(Jugador);
@@ -372,6 +381,176 @@ public class SistemaBatalla : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
     }
+    IEnumerator ChequearResistencias(Unidad unidad, string tipo)
+    {
+        if (tipo == "Fisico")
+        {
+            if (unidad.DebilidadFisica > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño físico.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadFisica < 1 && unidad.DebilidadFisica > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño físico.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadFisica == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño físico.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Fuego")
+        {
+            if (unidad.DebilidadFuego > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de fuego.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadFuego < 1 && unidad.DebilidadFuego > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de fuego.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadFuego == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de fuego.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Hielo")
+        {
+            if (unidad.DebilidadHielo > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de hielo.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadHielo < 1 && unidad.DebilidadHielo > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de hielo.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadHielo == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de hielo.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Rayo")
+        {
+            if (unidad.DebilidadRayo > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de rayo.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadRayo < 1 && unidad.DebilidadRayo > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de rayo.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadRayo == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de rayo.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Tierra")
+        {
+            if (unidad.DebilidadTierra > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de tierra.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadTierra < 1 && unidad.DebilidadTierra > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de tierra.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadTierra == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de tierra.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Agua")
+        {
+            if (unidad.DebilidadAgua > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de agua.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadAgua < 1 && unidad.DebilidadAgua > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de agua.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadAgua == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de agua.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Viento")
+        {
+            if (unidad.DebilidadViento > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de viento.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadViento < 1 && unidad.DebilidadViento > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de viento.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadViento == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de viento.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Balance")
+        {
+            if (unidad.DebilidadBalance > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de balance.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadBalance < 1 && unidad.DebilidadBalance > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de balance.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadBalance == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de balance.";
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if (tipo == "Caos")
+        {
+            if (unidad.DebilidadCaos > 1)
+            {
+                dialogoTexto.text = unidad.nombre + " es débil al daño de caos.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadCaos < 1 && unidad.DebilidadCaos > 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es resistente al daño de caos.";
+                yield return new WaitForSeconds(1f);
+            }
+            else if (unidad.DebilidadCaos == 0)
+            {
+                dialogoTexto.text = unidad.nombre + " es inmune al daño de caos.";
+                yield return new WaitForSeconds(1f);
+            }
+
+        }
+
+
+
+
+        }
     IEnumerator ComenzarBatalla()
     {
         GameObject jugador1Go = Instantiate(jugadorPrefab1, jugador1PosBatalla);
@@ -460,7 +639,8 @@ public class SistemaBatalla : MonoBehaviour
             
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Fisico");
+            StartCoroutine(ChequearResistencias(pj, "Fisico"));
             hud.vidaSlider.value = pj.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -470,7 +650,8 @@ public class SistemaBatalla : MonoBehaviour
             
             dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
             yield return new WaitForSeconds(0.5f);
-            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Fisico");
+            StartCoroutine(ChequearResistencias(pj, "Fisico"));
             hud.vidaSlider.value = pj.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
         }
@@ -488,9 +669,15 @@ public class SistemaBatalla : MonoBehaviour
 
             dialogoTexto.text = unidadEnemigo.nombre + " LLueven flechas sobre el grupo ";
             yield return new WaitForSeconds(0.5f);
-            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio);
-            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio);
-            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio);
+            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio, "Fisico");
+            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio, "Fisico");
+            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio, "Fisico");
+            StartCoroutine(ChequearResistencias(unidadJugador1, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(ChequearResistencias(unidadJugador2, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(ChequearResistencias(unidadJugador3, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
             jugador1HUD.vidaSlider.value = unidadJugador1.saludActual;
             jugador2HUD.vidaSlider.value = unidadJugador2.saludActual;
             jugador3HUD.vidaSlider.value = unidadJugador3.saludActual;
@@ -506,7 +693,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Lanza llamas a " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Fuego");
+            StartCoroutine(ChequearResistencias(pj, "Fuego"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -524,7 +712,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Congela a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Hielo");
+            StartCoroutine(ChequearResistencias(pj, "Hielo"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -541,7 +730,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Truena a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Rayo");
+            StartCoroutine(ChequearResistencias(pj, "Rayo"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -558,7 +748,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Entierra a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Tierra");
+            StartCoroutine(ChequearResistencias(pj, "Tierra"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -575,7 +766,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Inunda a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Agua");
+            StartCoroutine(ChequearResistencias(pj, "Agua"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -592,7 +784,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Vuela a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Viento");
+            StartCoroutine(ChequearResistencias(pj, "Viento"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -609,7 +802,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Ilumina a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Balance");
+            StartCoroutine(ChequearResistencias(pj, "Balance"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -626,7 +820,8 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Oscurece a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Caos");
+            StartCoroutine(ChequearResistencias(pj, "Caos"));
             hud.vidaSlider.value = unidadEnemigo.saludActual;
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
@@ -698,38 +893,26 @@ public class SistemaBatalla : MonoBehaviour
             dialogoTexto.text = "Derrota";
         }
     }
-    void TurnoJugador()
+IEnumerator Esperar(float tiempo)
     {
+        yield return new WaitForSeconds(tiempo);
         indexJugador++;
 
         if (indexJugador == 1)
         {
             unidadJugador1.PasoTurno();
+            dialogoTexto.text = "¡Le toca a " + unidadJugador1.nombre + "!";
         }
         if (indexJugador == 2)
         {
             unidadJugador2.PasoTurno();
+            dialogoTexto.text = "¡Le toca a " + unidadJugador2.nombre + "!";
         }
         if (indexJugador == 3)
         {
             unidadJugador3.PasoTurno();
+            dialogoTexto.text = "¡Le toca a " + unidadJugador3.nombre + "!";
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         if (indexJugador == 1 && unidadJugador1.stunRestante > 0)
         {
@@ -765,15 +948,16 @@ public class SistemaBatalla : MonoBehaviour
             {
                 StartCoroutine(TurnoEnemigo());
             }
-           
+
 
         }
-        else
-        {
 
-            dialogoTexto.text = "Tu turno";
-        }
 
+    }
+    void TurnoJugador()
+    {
+        StartCoroutine(Esperar(TiempoDeEspera));
+       
     }
     public void AtaqueBoton()
     {

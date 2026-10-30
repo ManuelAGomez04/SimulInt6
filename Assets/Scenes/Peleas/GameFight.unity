@@ -369,6 +369,15 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Aumento
+  DebilidadFisica: 1
+  DebilidadFuego: 1
+  DebilidadHielo: 1
+  DebilidadRayo: 1
+  DebilidadTierra: 1
+  DebilidadAgua: 1
+  DebilidadViento: 1
+  DebilidadBalance: 1
+  DebilidadCaos: 1
 --- !u!1 &32685709
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,8 +1789,18 @@ MonoBehaviour:
   - Kata
   - Ataque Basico
   - Aze
-  - 
+  - Flu
+  - Lluvia de flechas
   habilidades: []
+  DebilidadFisica: 1
+  DebilidadFuego: 1.2
+  DebilidadHielo: 1
+  DebilidadRayo: 0.8
+  DebilidadTierra: 1
+  DebilidadAgua: 1
+  DebilidadViento: 0.8
+  DebilidadBalance: 1.2
+  DebilidadCaos: 0.8
 --- !u!1 &472684506
 GameObject:
   m_ObjectHideFlags: 0
@@ -6915,7 +6934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -114.41229, y: 5.0281}
+  m_AnchoredPosition: {x: -116.8, y: 7.3475}
   m_SizeDelta: {x: 354.4185, y: 192.027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481049409
@@ -7292,6 +7311,16 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Ataque Aturdidor
+  - 
+  DebilidadFisica: 1
+  DebilidadFuego: 1
+  DebilidadHielo: 1
+  DebilidadRayo: 1
+  DebilidadTierra: 1
+  DebilidadAgua: 1
+  DebilidadViento: 1
+  DebilidadBalance: 1
+  DebilidadCaos: 1
 --- !u!1 &1545807701
 GameObject:
   m_ObjectHideFlags: 0
@@ -7708,9 +7737,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'A
-
-'
+  m_Text: "\xA1Inicia Batalla!"
 --- !u!222 &1624300739
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9012,6 +9039,18 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Bru
+  - Chio
+  - Flu
+  - Rea
+  DebilidadFisica: 1
+  DebilidadFuego: 1
+  DebilidadHielo: 1
+  DebilidadRayo: 1
+  DebilidadTierra: 1
+  DebilidadAgua: 1
+  DebilidadViento: 1
+  DebilidadBalance: 1
+  DebilidadCaos: 1
 --- !u!1 &1915264274
 GameObject:
   m_ObjectHideFlags: 0
@@ -9384,6 +9423,7 @@ MonoBehaviour:
   - "Ataque b\xE1sico"
   - Ataque grande
   indexPatron: 0
+  TiempoDeEspera: 2
 --- !u!4 &1970112928
 Transform:
   m_ObjectHideFlags: 0
