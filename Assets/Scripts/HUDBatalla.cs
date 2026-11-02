@@ -10,23 +10,29 @@ public class HUDBatalla : MonoBehaviour
 {
     public TextMeshProUGUI nombreTexto;
     public TextMeshProUGUI nivelTexto;
-    public Slider vidaSlider;
-    public Slider manaSlider;
+    public Image vidaSlider;
+    public Image manaSlider;
+    public float saludMaxima;
+    public float manaMaximo;
+    public TextMeshProUGUI TextoMana;
+
 
     public void SetHUD(Unidad unidad)
     {
         nombreTexto.text = unidad.nombre;
         nivelTexto.text = "Level" + unidad.nivelUnidad;
-        vidaSlider.maxValue = unidad.saludMaxima;
-        vidaSlider.value = unidad.saludActual;
-        manaSlider.maxValue = unidad.manaMaximo;    
-        manaSlider.value = unidad.mana; 
-        
+        saludMaxima = unidad.saludMaxima;
+        manaMaximo = unidad.manaMaximo;
+        vidaSlider.fillAmount = unidad.saludActual / unidad.saludMaxima;
+        manaSlider.fillAmount = unidad.mana / unidad.manaMaximo;
+        SetMana(unidad.mana);
+
     }
 
-    public void SetSalud(int salud)
+    public void SetSalud(float salud) 
     {
-        vidaSlider.value = salud;
+        vidaSlider.fillAmount = salud/saludMaxima;
+
     }
 
     internal void SetHUD(Unit unidadEnemigo)
@@ -39,9 +45,13 @@ public class HUDBatalla : MonoBehaviour
         throw new NotImplementedException();
     }
 
-    public void SetMana(int Mana)
+    public void SetMana(float Mana)
     {
-      manaSlider.value = Mana;
+      manaSlider.fillAmount = Mana/manaMaximo;
+        if (TextoMana != null)
+        {
+            TextoMana.text = Mana.ToString() + "/" + manaMaximo.ToString();
+        }
     }
 
 }
