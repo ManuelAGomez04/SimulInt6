@@ -15,6 +15,7 @@ public class HUDBatalla : MonoBehaviour
     public float saludMaxima;
     public float manaMaximo;
     public TextMeshProUGUI TextoMana;
+    public Animator animatorataque;
 
 
     public void SetHUD(Unidad unidad)
@@ -33,6 +34,18 @@ public class HUDBatalla : MonoBehaviour
     {
         vidaSlider.fillAmount = salud/saludMaxima;
 
+    }
+
+    public void AnimacionAtaque()
+    {
+        animatorataque.gameObject.SetActive(true);
+        StartCoroutine(DesactivarAnimacion());
+
+    }
+    IEnumerator DesactivarAnimacion()
+    {
+        yield return new WaitForSeconds(1f);
+        animatorataque.gameObject.SetActive(false);
     }
 
     internal void SetHUD(Unit unidadEnemigo)

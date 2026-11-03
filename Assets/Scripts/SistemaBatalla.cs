@@ -292,7 +292,9 @@ public class SistemaBatalla : MonoBehaviour
                 return;
             }
             dropdownAtaques.gameObject.SetActive(false);
-            
+            HUDBatalla hudJugador = seleccionarHud(Jugador);
+            hudJugador.AnimacionAtaque();
+
             if (muerto)
             {
                 state = EstadoBatalla.VICTORIA;

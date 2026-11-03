@@ -9,7 +9,7 @@ public class MovProta : MonoBehaviour
     public object Rigidbody2D;
 
     Rigidbody2D rigidbody;
-
+    public Animator Animator;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
@@ -23,11 +23,31 @@ public class MovProta : MonoBehaviour
     private void Update()
     {
         Movement();
+       
+
     }
 
     private void Movement()
     { 
-        direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        float velocidadX = Input.GetAxisRaw("Horizontal")*Time.deltaTime;
+        float velocidadY = Input.GetAxisRaw("Vertical")*Time.deltaTime;
+        Animator.SetFloat("Caminar", velocidadX);
+        if (velocidadX > 0)
+        {
+            gameObject.transform.localScale = new Vector3(-0.2415622f, 0.2082884f, 1);
+           
+
+        }
+        else if (velocidadX < 0)
+        {
+            gameObject.transform.localScale = new Vector3(0.2415622f, 0.2082884f, 1);
+
+        }
+      
+        Vector3 posicion = transform.position;
+
+        transform.position = new Vector3(velocidadX*speed + posicion.x, posicion.y + velocidadY*speed, posicion.z);
+       
     }
 
 }
