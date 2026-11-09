@@ -14,6 +14,7 @@ public class SistemaBatalla : MonoBehaviour
     public GameObject jugadorPrefab2;
     public GameObject jugadorPrefab3;
     public GameObject enemigoPrefab;
+    public GameObject selector; 
     public GameManagerScript gameManager;
     public bool isDead;
     public TextMeshProUGUI TextoVida1;
@@ -36,6 +37,51 @@ public class SistemaBatalla : MonoBehaviour
     public HUDBatalla jugador2HUD;
     public HUDBatalla jugador3HUD;
     public HUDBatalla enemigoHUD;
+    public List<GameObject> botones;
+    public GameObject SelectorA;
+    public GameObject Prefavboton;
+    public GameObject menu;
+    public void crearbotones(Unidad jugador)
+    {
+        int index = 0;
+        foreach (string opcion in jugador.habilidades)
+        { 
+            GameObject boton = Instantiate(Prefavboton, SelectorA.transform);
+           // boton.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(AtaqueJugador(jugador)));
+           boton.transform.SetParent(menu.transform, true);
+            boton.GetComponent<RectTransform>().anchoredPosition = new Vector2( 295, 210 - 60 * index);
+            index++;
+            botones.Add(boton);
+            boton.GetComponentInChildren<TextMeshProUGUI>().text = opcion;
+        }
+    }
+    public void destruirbotones()
+    {
+        foreach (GameObject boton in botones)
+        {
+            Destroy(boton);
+        }
+        botones.Clear();
+    }
+
+    public void ActivarBotones()
+    {
+         SelectorA.SetActive(true);
+        foreach (GameObject boton in botones)
+        {
+
+            boton.SetActive(true);
+        }
+    }
+
+    public void DesactivarBotones()
+    {
+        SelectorA.SetActive(false);
+        foreach (GameObject boton in botones)
+        {
+            boton.SetActive(false);
+        }
+    }
 
     public Text dialogoTexto;
 
@@ -54,7 +100,8 @@ public class SistemaBatalla : MonoBehaviour
         TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
         TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
         TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
-
+        DesactivarBotones();
+        destruirbotones();
     }
     //tiene que dejar de defender
     IEnumerator AtaqueJugador(Unidad Jugador)
@@ -64,6 +111,10 @@ public class SistemaBatalla : MonoBehaviour
         dropdownAtaques.ClearOptions();
         dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = "Elegir una opción" });
         dropdownAtaques.gameObject.SetActive(true);
+        crearbotones(Jugador);
+        ActivarBotones();
+
+
         for (int i = 0; i < Jugador.habilidades.Count; i++)
         {
             dropdownAtaques.options.Add(new TMP_Dropdown.OptionData() { text = Jugador.habilidades[i] });
@@ -904,16 +955,24 @@ IEnumerator Esperar(float tiempo)
         {
             unidadJugador1.PasoTurno();
             dialogoTexto.text = "¡Le toca a " + unidadJugador1.nombre + "!";
+            selector.SetActive(true);
+            selector.transform.position = unidadJugador1.transform.parent.position + new Vector3(0, 2.20f, 0);
+
         }
         if (indexJugador == 2)
         {
             unidadJugador2.PasoTurno();
             dialogoTexto.text = "¡Le toca a " + unidadJugador2.nombre + "!";
+            selector.SetActive(true);
+            selector.transform.position = unidadJugador2.transform.parent.position + new Vector3(0, 2.20f, 0);
+
         }
         if (indexJugador == 3)
         {
             unidadJugador3.PasoTurno();
             dialogoTexto.text = "¡Le toca a " + unidadJugador3.nombre + "!";
+            selector.SetActive(true);
+            selector.transform.position = unidadJugador3.transform.parent.position + new Vector3(0, 2.20f, 0);
         }
 
         if (indexJugador == 1 && unidadJugador1.stunRestante > 0)
@@ -937,6 +996,7 @@ IEnumerator Esperar(float tiempo)
 
         if (indexJugador == 4)
         {
+            selector.SetActive(false);
             if (unidadEnemigo.stunRestante > 0)
             {
                 dialogoTexto.text = unidadEnemigo.nombre + " está inmovilizado.";
@@ -949,6 +1009,7 @@ IEnumerator Esperar(float tiempo)
             else
             {
                 StartCoroutine(TurnoEnemigo());
+
             }
 
 
