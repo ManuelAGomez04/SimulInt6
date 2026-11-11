@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovProta : MonoBehaviour
 {
@@ -48,6 +49,14 @@ public class MovProta : MonoBehaviour
 
         transform.position = new Vector3(velocidadX*speed + posicion.x, posicion.y + velocidadY*speed, posicion.z);
        
+    }
+    public void RandomBattle()
+    {
+               float randomValue = Random.value;
+        if (randomValue < 0.1f) // 10% chance of triggering a battle
+        {
+           SceneManager.LoadScene("BattleScene");
+        }
     }
 
 }

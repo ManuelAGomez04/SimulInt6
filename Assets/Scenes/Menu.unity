@@ -1408,6 +1408,14 @@ PrefabInstance:
       propertyPath: recompenza3
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: habilidadesDesbloqueadas.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4459747523880095096, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: m_Name
       value: RecompenzaManager

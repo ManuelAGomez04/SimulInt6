@@ -180,10 +180,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: DEFENDER
+  m_text: 'Defender
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9192e8da4d5bb5f4e9116bd5c4166a2c, type: 2}
-  m_sharedMaterial: {fileID: -6294878446719607881, guid: 9192e8da4d5bb5f4e9116bd5c4166a2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f2a6153aa208d224bb1932f00ae3975a, type: 2}
+  m_sharedMaterial: {fileID: -9024670290076171032, guid: f2a6153aa208d224bb1932f00ae3975a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -379,6 +381,9 @@ MonoBehaviour:
   DebilidadViento: 1
   DebilidadBalance: 1
   DebilidadCaos: 1
+  EXP: 0
+  EXPNecesaria: 0
+  LV: 0
 --- !u!95 &18135332
 Animator:
   serializedVersion: 5
@@ -2633,6 +2638,9 @@ MonoBehaviour:
   DebilidadViento: 0.8
   DebilidadBalance: 1.2
   DebilidadCaos: 0.8
+  EXP: 100
+  EXPNecesaria: 0
+  LV: 0
 --- !u!95 &427026195
 Animator:
   serializedVersion: 5
@@ -3499,7 +3507,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.939
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5271,6 +5279,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801384002}
   m_CullTransparentMesh: 1
+--- !u!1 &812458223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 812458225}
+  - component: {fileID: 812458224}
+  m_Layer: 0
+  m_Name: MusicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &812458224
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812458223}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3f016b30f72db2744b310fe85b8570cc, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.859
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &812458225
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 812458223}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 699.2756, y: 322.9524, z: 3.8941815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &812749931
 GameObject:
   m_ObjectHideFlags: 0
@@ -6309,12 +6445,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'CURAR
+  m_text: 'Curar
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9192e8da4d5bb5f4e9116bd5c4166a2c, type: 2}
-  m_sharedMaterial: {fileID: -6294878446719607881, guid: 9192e8da4d5bb5f4e9116bd5c4166a2c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f2a6153aa208d224bb1932f00ae3975a, type: 2}
+  m_sharedMaterial: {fileID: -9024670290076171032, guid: f2a6153aa208d224bb1932f00ae3975a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10116,6 +10252,9 @@ MonoBehaviour:
   DebilidadViento: 1
   DebilidadBalance: 1
   DebilidadCaos: 1
+  EXP: 0
+  EXPNecesaria: 0
+  LV: 0
 --- !u!95 &1519441039
 Animator:
   serializedVersion: 5
@@ -12689,6 +12828,9 @@ MonoBehaviour:
   DebilidadViento: 1
   DebilidadBalance: 1
   DebilidadCaos: 1
+  EXP: 0
+  EXPNecesaria: 0
+  LV: 0
 --- !u!95 &1903237886
 Animator:
   serializedVersion: 5
@@ -14059,3 +14201,4 @@ SceneRoots:
   - {fileID: 1133082701}
   - {fileID: 1945840782}
   - {fileID: 621831865}
+  - {fileID: 812458225}

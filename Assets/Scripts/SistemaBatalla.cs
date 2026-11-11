@@ -392,6 +392,8 @@ public class SistemaBatalla : MonoBehaviour
         }
         destruirbotones();
         DesactivarBotones();
+        AudioAtaque.clip = ListaAudioAtaque[posicionlistaiconos(opcion)];
+        AudioAtaque.Play();
 
         HUDBatalla hudJugador = seleccionarHud(Jugador);
         hudJugador.AnimacionAtaque();
@@ -1000,6 +1002,9 @@ public class SistemaBatalla : MonoBehaviour
             {
                 RecompenzaManager rm = RecompenzaManager.Instance;
                 rm.dinero += 27;
+                unidadJugador1.GanarEXP(unidadEnemigo.EXP);
+                unidadJugador2.GanarEXP(unidadEnemigo.EXP);
+                unidadJugador3.GanarEXP(unidadEnemigo.EXP);
 
             }
             dialogoTexto.text = "Ganaste 27 de Oro!";

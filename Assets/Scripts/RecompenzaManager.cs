@@ -20,7 +20,9 @@ public class RecompenzaManager : MonoBehaviour
     public bool recompenza1 = false;
     public bool recompenza2 = false;
     public bool recompenza3 = false;
-    public int dinero = 0;  
+    public int dinero = 0;
+    public List<Unidad> habilidadesDesbloqueadas;
+    public List<Unidad> ListaUnidades;
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
