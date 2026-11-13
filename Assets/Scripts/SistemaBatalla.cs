@@ -161,6 +161,7 @@ public class SistemaBatalla : MonoBehaviour
     IEnumerator chequearataque(string opcion, Unidad Jugador)
     {
         bool muerto = false;
+        bool turnoJugador = true;
         if (opcion == "Ataque básico")
         {
 
@@ -188,12 +189,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Aumento" && Jugador.mana < 5)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false; 
         }
         else if (opcion == "Aumento" && Jugador.chequearCD("Aumento") == true)
         {
             dialogoTexto.text = "Recuperando Habilidad.";
-            yield break;
+            turnoJugador = false;
         }
         //Fin Aumento
         //Inicia Ataque
@@ -213,12 +214,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Ataque Aturdidor" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
         }
         else if (opcion == "Ataque Aturdidor" && Jugador.chequearCD("Ataque Aturdidor") == true)
         {
             dialogoTexto.text = "Recuperando Habilidad.";
-            yield break;
+            turnoJugador = false;
         }
         //Fin Ataque
         //Magia
@@ -239,7 +240,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Bru" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Bru" && Jugador.chequearCD("Bru") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
 
 
@@ -260,7 +266,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Chio" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Chio" && Jugador.chequearCD("Chio") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Ful" && Jugador.mana >= 5 && Jugador.chequearCD("Ful") == false)
         {
@@ -279,7 +290,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Ful" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Flu" && Jugador.chequearCD("Flu") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Rea" && Jugador.mana >= 5 && Jugador.chequearCD("Rea") == false)
         {
@@ -298,7 +314,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Rea" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Rea" && Jugador.chequearCD("Rea") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Nero" && Jugador.mana >= 5 && Jugador.chequearCD("Nero") == false)
         {
@@ -317,7 +338,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Nero" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Nero" && Jugador.chequearCD("Nero") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Aze" && Jugador.mana >= 5 && Jugador.chequearCD("Aze") == false)
         {
@@ -336,7 +362,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Aze" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Aze" && Jugador.chequearCD("Aze") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Dyo" && Jugador.mana >= 5 && Jugador.chequearCD("Dyo") == false)
         {
@@ -355,7 +386,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Dyo" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Dyo" && Jugador.chequearCD("Dyo") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Kata" && Jugador.mana >= 5 && Jugador.chequearCD("Kata") == false)
         {
@@ -374,7 +410,12 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Kata" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
+        }
+        else if (opcion == "Kata" && Jugador.chequearCD("Kata") == true)
+        {
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
         if (opcion == "Agni" && Jugador.mana >= 5 && Jugador.chequearCD("Agni") == false)
         {
@@ -392,27 +433,37 @@ public class SistemaBatalla : MonoBehaviour
         else if (opcion == "Agni" && Jugador.mana < 7)
         {
             dialogoTexto.text = "Maná Insuficiente.";
-            yield break;
+            turnoJugador = false;
         }
-        destruirbotones();
-        DesactivarBotones();
-        AudioAtaque.clip = ListaAudioAtaque[posicionlistaiconos(opcion)];
-        AudioAtaque.Play();
-
-        HUDBatalla hudJugador = seleccionarHud(Jugador);
-        hudJugador.AnimacionAtaque();
-
-        if (muerto)
+        else if (opcion == "Agni" && Jugador.chequearCD("Agni") == true)
         {
-            state = EstadoBatalla.VICTORIA;
-            TerminarBatalla();
+            dialogoTexto.text = "Recuperando Habilidad.";
+            turnoJugador = false;
         }
-        else
+        if (turnoJugador == true)
         {
-            state = EstadoBatalla.TURNOJUG;
-            TurnoJugador();
+            destruirbotones();
+            DesactivarBotones();
+            AudioAtaque.clip = ListaAudioAtaque[posicionlistaiconos(opcion)];
+            AudioAtaque.Play();
 
+            HUDBatalla hudJugador = seleccionarHud(Jugador);
+            hudJugador.AnimacionAtaque();
+
+            if (muerto)
+            {
+                state = EstadoBatalla.VICTORIA;
+                TerminarBatalla();
+            }
+            else
+            {
+                state = EstadoBatalla.TURNOJUG;
+                TurnoJugador();
+
+            }
         }
+        yield return new WaitForSeconds(0.1f);
+
 
     }
     IEnumerator AtaqueJugador(Unidad Jugador)

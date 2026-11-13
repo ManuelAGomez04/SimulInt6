@@ -38,50 +38,39 @@ public class Unidad : MonoBehaviour
             RecompenzaManager rm = RecompenzaManager.Instance;
             if (nombre == "Sofia")
             {
-                if (rm.ListaUnidades[0] == null)
+              
+                if (rm.ListaUnidades[0].FirstTime)
                 {
-                    rm.ListaUnidades[0] = this;
+                    rm.ListaUnidades[0].FirstTime = false;
                 }
-                saludActual = rm.ListaUnidades[0].saludActual;
-                saludMaxima= rm.ListaUnidades[0].saludMaxima;
-                danio = rm.ListaUnidades[0].danio;
-                podermagico = rm.ListaUnidades[0].podermagico;
-                mana = rm.ListaUnidades[0].mana;
-                EXP = rm.ListaUnidades[0].EXP;
-                EXPNecesaria = rm.ListaUnidades[0].EXPNecesaria;
-                LV = rm.ListaUnidades[0].LV;
+                else 
+                {
+                     CargarDatos(rm.ListaUnidades[0]);
+                }
 
             }
             if (nombre == "Mastropiero")
             {
-                if (rm.ListaUnidades[1] == null)
+                if (rm.ListaUnidades[1].FirstTime)
                 {
-                    rm.ListaUnidades[1] = this;
+                    rm.ListaUnidades[1].FirstTime = false;
                 }
-                saludActual = rm.ListaUnidades[1].saludActual;
-                saludMaxima = rm.ListaUnidades[1].saludMaxima;
-                danio = rm.ListaUnidades[1].danio;
-                podermagico = rm.ListaUnidades[1].podermagico;
-                mana = rm.ListaUnidades[1].mana;
-                EXP = rm.ListaUnidades[1].EXP;
-                EXPNecesaria = rm.ListaUnidades[1].EXPNecesaria;
-                LV = rm.ListaUnidades[1].LV;
+                else
+                {
+                    CargarDatos(rm.ListaUnidades[1]);
+                }
 
             }
             if (nombre == "Alfredo")
             {
-                if (rm.ListaUnidades[2] == null)
+                if (rm.ListaUnidades[2].FirstTime)
                 {
-                    rm.ListaUnidades[2] = this;
+                    rm.ListaUnidades[2].FirstTime = false;
                 }
-                saludActual = rm.ListaUnidades[2].saludActual;
-                saludMaxima = rm.ListaUnidades[2].saludMaxima;
-                danio = rm.ListaUnidades[2].danio;
-                podermagico = rm.ListaUnidades[2].podermagico;
-                mana = rm.ListaUnidades[2].mana;
-                EXP = rm.ListaUnidades[2].EXP;
-                EXPNecesaria = rm.ListaUnidades[2].EXPNecesaria;
-                LV = rm.ListaUnidades[2].LV;
+                else
+                {
+                    CargarDatos(rm.ListaUnidades[2]);
+                }
 
             }
             if (rm.recompenza1 && nombre == "Sofia")
@@ -212,17 +201,82 @@ public class Unidad : MonoBehaviour
             RecompenzaManager rm = RecompenzaManager.Instance;
             if (nombre == "Sofia")
             {   
-                    rm.ListaUnidades[0] = this;         
+               GuardarDatos(rm.ListaUnidades[0]);
             }
             if (nombre == "Mastropiero")
             {             
-                    rm.ListaUnidades[1] = this;                
+              GuardarDatos(rm.ListaUnidades[1]);
             }
             if (nombre == "Alfredo")
             {
-              rm.ListaUnidades[2] = this;
+              GuardarDatos(rm.ListaUnidades[2]);
             }
         }
 
+    }
+    public void GuardarDatos(PlayerData data)
+    {
+        data.nombre = nombre;
+        data.nivelUnidad = nivelUnidad;
+        data.danio = danio;
+        data.saludMaxima = saludMaxima;
+        data.saludActual = saludActual;
+        data.Bloqueando = Bloqueando;
+        data.podermagico = podermagico;
+        data.fuerza = fuerza;
+        data.stunRestante = stunRestante;
+        data.mana = mana;
+        data.manaMaximo = manaMaximo;
+
+
+        data.listaCD = new List<string>(listaCD);
+        data.habilidades = new List<string>(habilidades);
+
+        data.DebilidadFisica = DebilidadFisica;
+        data.DebilidadFuego = DebilidadFuego;
+        data.DebilidadHielo = DebilidadHielo;
+        data.DebilidadRayo = DebilidadRayo;
+        data.DebilidadTierra = DebilidadTierra;
+        data.DebilidadAgua = DebilidadAgua;
+        data.DebilidadViento = DebilidadViento;
+        data.DebilidadBalance = DebilidadBalance;
+        data.DebilidadCaos = DebilidadCaos;
+
+        data.EXP = EXP;
+        data.EXPNecesaria = EXPNecesaria;
+        data.LV = LV;
+        data.FirstTime = false;
+    }
+    public void CargarDatos(PlayerData data)
+    {
+        nombre = data.nombre;
+        nivelUnidad = data.nivelUnidad;
+        danio = data.danio;
+        saludMaxima = data.saludMaxima;
+        saludActual = data.saludActual;
+        Bloqueando = data.Bloqueando;
+        podermagico = data.podermagico;
+        fuerza = data.fuerza;
+        stunRestante = data.stunRestante;
+        mana = data.mana;
+        manaMaximo = data.manaMaximo;
+
+
+        listaCD = new List<string>(data.listaCD);
+        habilidades = new List<string>(data.habilidades);
+
+        DebilidadFisica = data.DebilidadFisica;
+        DebilidadFuego = data.DebilidadFuego;
+        DebilidadHielo = data.DebilidadHielo;
+        DebilidadRayo = data.DebilidadRayo;
+        DebilidadTierra = data.DebilidadTierra;
+        DebilidadAgua = data.DebilidadAgua;
+        DebilidadViento = data.DebilidadViento;
+        DebilidadBalance = data.DebilidadBalance;
+        DebilidadCaos = data.DebilidadCaos;
+
+        EXP = data.EXP;
+        EXPNecesaria = data.EXPNecesaria;
+        LV = data.LV;
     }
 }

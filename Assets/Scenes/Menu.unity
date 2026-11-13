@@ -1413,6 +1413,34 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades2.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a1f5461f80bbbec46b814d6df64a8235, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b277307e078ae614983fb5cd8c8ad99a, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: a928ffcc26fbe384fa30c43efd32ce01, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades2.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bcb04a391da6b4043a863f174cf3a97c, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades2.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b277307e078ae614983fb5cd8c8ad99a, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ListaUnidades2.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: ead7d754064d74b4da60065c287f3f70, type: 2}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: habilidadesDesbloqueadas.Array.size
       value: 3
       objectReference: {fileID: 0}

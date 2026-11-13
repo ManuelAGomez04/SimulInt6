@@ -22,9 +22,11 @@ public class RecompenzaManager : MonoBehaviour
     public bool recompenza3 = false;
     public int dinero = 0;
     public List<Unidad> habilidadesDesbloqueadas;
-    public List<Unidad> ListaUnidades;
+    public List<PlayerData> ListaUnidades;
+    public List<PlayerData> ListaUnidades2;
     private void Awake()
     {
+        print (ListaUnidades[0].FirstTime);
         DontDestroyOnLoad(this.gameObject);
         if (Instance != null && Instance != this)
         {
@@ -33,6 +35,14 @@ public class RecompenzaManager : MonoBehaviour
         else
         {
             Instance = this;
+            for (int i = 0; i < 3; i++)
+            {
+                if (ListaUnidades[i] != null && ListaUnidades2[i] != null)
+                {
+
+                    ListaUnidades[i].CopyFrom(ListaUnidades2[i]);
+                }
+            }
         }
 
     }
