@@ -42,14 +42,14 @@ public class Unidad : MonoBehaviour
                 {
                     rm.ListaUnidades[0] = this;
                 }
-                rm.ListaUnidades[0].saludActual = saludActual;
-                rm.ListaUnidades[0].saludMaxima = saludMaxima;
-                rm.ListaUnidades[0].danio = danio;
-                rm.ListaUnidades[0].podermagico = podermagico;
-                rm.ListaUnidades[0].mana = mana;
-                rm.ListaUnidades[0].EXP = EXP;
-                rm.ListaUnidades[0].EXPNecesaria = EXPNecesaria;
-                rm.ListaUnidades[0].LV = LV;
+                saludActual = rm.ListaUnidades[0].saludActual;
+                saludMaxima= rm.ListaUnidades[0].saludMaxima;
+                danio = rm.ListaUnidades[0].danio;
+                podermagico = rm.ListaUnidades[0].podermagico;
+                mana = rm.ListaUnidades[0].mana;
+                EXP = rm.ListaUnidades[0].EXP;
+                EXPNecesaria = rm.ListaUnidades[0].EXPNecesaria;
+                LV = rm.ListaUnidades[0].LV;
 
             }
             if (nombre == "Mastropiero")
@@ -58,14 +58,14 @@ public class Unidad : MonoBehaviour
                 {
                     rm.ListaUnidades[1] = this;
                 }
-                rm.ListaUnidades[1].saludActual = saludActual;
-                rm.ListaUnidades[1].saludMaxima = saludMaxima;
-                rm.ListaUnidades[1].danio = danio;
-                rm.ListaUnidades[1].podermagico = podermagico;
-                rm.ListaUnidades[1].mana = mana;
-                rm.ListaUnidades[1].EXP = EXP;
-                rm.ListaUnidades[1].EXPNecesaria = EXPNecesaria;
-                rm.ListaUnidades[1].LV = LV;
+                saludActual = rm.ListaUnidades[1].saludActual;
+                saludMaxima = rm.ListaUnidades[1].saludMaxima;
+                danio = rm.ListaUnidades[1].danio;
+                podermagico = rm.ListaUnidades[1].podermagico;
+                mana = rm.ListaUnidades[1].mana;
+                EXP = rm.ListaUnidades[1].EXP;
+                EXPNecesaria = rm.ListaUnidades[1].EXPNecesaria;
+                LV = rm.ListaUnidades[1].LV;
 
             }
             if (nombre == "Alfredo")
@@ -74,14 +74,14 @@ public class Unidad : MonoBehaviour
                 {
                     rm.ListaUnidades[2] = this;
                 }
-                rm.ListaUnidades[2].saludActual = saludActual;
-                rm.ListaUnidades[2].saludMaxima = saludMaxima;
-                rm.ListaUnidades[2].danio = danio;
-                rm.ListaUnidades[2].podermagico = podermagico;
-                rm.ListaUnidades[2].mana = mana;
-                rm.ListaUnidades[2].EXP = EXP;
-                rm.ListaUnidades[2].EXPNecesaria = EXPNecesaria;
-                rm.ListaUnidades[2].LV = LV;
+                saludActual = rm.ListaUnidades[2].saludActual;
+                saludMaxima = rm.ListaUnidades[2].saludMaxima;
+                danio = rm.ListaUnidades[2].danio;
+                podermagico = rm.ListaUnidades[2].podermagico;
+                mana = rm.ListaUnidades[2].mana;
+                EXP = rm.ListaUnidades[2].EXP;
+                EXPNecesaria = rm.ListaUnidades[2].EXPNecesaria;
+                LV = rm.ListaUnidades[2].LV;
 
             }
             if (rm.recompenza1 && nombre == "Sofia")

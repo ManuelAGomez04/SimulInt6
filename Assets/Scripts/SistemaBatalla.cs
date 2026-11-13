@@ -52,7 +52,7 @@ public class SistemaBatalla : MonoBehaviour
             GameObject boton = Instantiate(Prefavboton, SelectorA.transform);
            boton.GetComponent<Button>().onClick.AddListener(() => StartCoroutine(chequearataque(opcion,jugador)));
            boton.transform.SetParent(menu.transform, true);
-            boton.GetComponent<RectTransform>().anchoredPosition = new Vector2( 295, 210 - 60 * index);
+            boton.GetComponent<RectTransform>().anchoredPosition = new Vector2( 325, 210 - 60 * index);
             index++;
             botones.Add(boton);
             boton.GetComponentInChildren<TextMeshProUGUI>().text = opcion;
@@ -149,6 +149,10 @@ public class SistemaBatalla : MonoBehaviour
         TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
         TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
         TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
+        unidadJugador1.GetComponent<SpriteRenderer>().enabled = false;
+        unidadJugador2.GetComponent<SpriteRenderer>().enabled = false;
+        unidadJugador3.GetComponent<SpriteRenderer>().enabled = false;
+        unidadEnemigo.GetComponent<SpriteRenderer>().enabled = false;
         DesactivarBotones();
         destruirbotones();
     }
@@ -427,25 +431,7 @@ public class SistemaBatalla : MonoBehaviour
             dropdownAtaques.onValueChanged.RemoveAllListeners(); // Remove the listener after selection
         }
         );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+   
         float danioFinal = Jugador.danio + Jugador.fuerza;
         int suerte = UnityEngine.Random.Range(1, 5);
         int esquivar = UnityEngine.Random.Range(1, 10);
@@ -486,13 +472,7 @@ public class SistemaBatalla : MonoBehaviour
 
             //normal
 
-        }
-
-
-
-       
-
-
+        }     
         //suerte
         //0 no acertaste
         //1 a 5 normal
@@ -1127,6 +1107,8 @@ IEnumerator Esperar(float tiempo)
     public void Defenderboton()
 
     {
+        destruirbotones();
+        DesactivarBotones();
         dropdownAtaques.gameObject.SetActive(false);
         if (state != EstadoBatalla.TURNOJUG && state != EstadoBatalla.ESPERANDO)
             return;
@@ -1214,6 +1196,8 @@ IEnumerator Esperar(float tiempo)
 
      IEnumerator CurarJugador(Unidad Jugador)
     {
+        destruirbotones();
+        DesactivarBotones();
         print("Curando a " + Jugador.nombre);
         dialogoTexto.text = Jugador.nombre + " ha curado!";
         state = EstadoBatalla.ESPERANDO;

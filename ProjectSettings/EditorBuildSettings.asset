@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Peleas/Random.unity
+    guid: 18ffa888520d69c4eb4cb0d4b5989ef6
   m_configObjects: {}

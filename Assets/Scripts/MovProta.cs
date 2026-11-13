@@ -8,6 +8,9 @@ public class MovProta : MonoBehaviour
     public float speed = 5f;
     public Vector2 direction;
     public object Rigidbody2D;
+    public float ChanceCombate = 0.1f; 
+    public string escenaCombate = "Random"; 
+    public float tiempoEntreCombates = 15f;
 
     Rigidbody2D rigidbody;
     public Animator Animator;
@@ -19,13 +22,12 @@ public class MovProta : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody.velocity = direction * speed;
+        
     }
 
     private void Update()
     {
         Movement();
-       
-
     }
 
     private void Movement()
@@ -48,14 +50,18 @@ public class MovProta : MonoBehaviour
         Vector3 posicion = transform.position;
 
         transform.position = new Vector3(velocidadX*speed + posicion.x, posicion.y + velocidadY*speed, posicion.z);
-       
+       if (velocidadX != 0 || velocidadY != 0)
+        {
+            RandomBattle();
+        }
     }
     public void RandomBattle()
     {
-               float randomValue = Random.value;
-        if (randomValue < 0.1f) // 10% chance of triggering a battle
+        tiempoEntreCombates -= Time.deltaTime;
+        float randomValue = Random.value;
+        if (tiempoEntreCombates <= 0 && randomValue < ChanceCombate)
         {
-           SceneManager.LoadScene("BattleScene");
+           SceneManager.LoadScene(escenaCombate);
         }
     }
 
