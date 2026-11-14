@@ -87,5 +87,109 @@ public class Comprar : MonoBehaviour
 
             }
         }
+        if (3 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[2].DebilidadFuego = 0.50f;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Alfredo ahora es resistente al Fuego";
+                gameObject.SetActive(false);
+
+            }
+        }
+        if (4 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[1].DebilidadTierra = 0.50f;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Mastropiero ahora es resistente a la tierra";
+                gameObject.SetActive(false);
+
+            }
+        }
+        if (5 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[2].DebilidadHielo = 0.50f;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Alfredo ahora es resistente al Hielo";
+                gameObject.SetActive(false);
+
+            }
+        }
+        if (6 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[0].DebilidadCaos = 0.50f;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Sofia ahora es resistente al Caos";
+                gameObject.SetActive(false);
+
+            }
+        }
+        if (7 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[2].DebilidadBalance = 0.50f;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Mastropiero ahora es resistente al Balance";
+                gameObject.SetActive(false);
+
+            }
+        }
+
+        if (8 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[0].fuerza += 2;
+                rm.ListaUnidades[0].danio += 2;
+                rm.ListaUnidades[0].podermagico += 2;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Sofia ahora es más fuerte";
+                gameObject.SetActive(false);
+
+            }
+        }
+
+        if (9 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[1].fuerza += 2;
+                rm.ListaUnidades[1].danio += 3;
+                rm.ListaUnidades[1].podermagico += 3;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Mastropiero ahora es más fuerte";
+                gameObject.SetActive(false);
+
+            }
+        }
+        if (0 == compra)
+        {
+            if (RecompenzaManager.Instance != null)
+            {
+                RecompenzaManager rm = RecompenzaManager.Instance;
+                rm.ListaUnidades[2].fuerza += 2;
+                rm.ListaUnidades[2].danio += 3;
+                rm.ListaUnidades[2].podermagico += 4;
+                rm.ItemsTienda[compra] = true;
+                Dialogo.text = "Alfredo ahora es más fuerte";
+                gameObject.SetActive(false);
+
+            }
+        }
     }
 }

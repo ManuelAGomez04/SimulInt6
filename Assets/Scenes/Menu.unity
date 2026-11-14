@@ -1410,7 +1410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: ItemsTienda.Array.size
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: ListaUnidades.Array.size
