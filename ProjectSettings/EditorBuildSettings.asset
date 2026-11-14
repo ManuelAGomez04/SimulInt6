@@ -12,35 +12,41 @@ EditorBuildSettings:
     path: Assets/Scenes/Camino/Camino.unity
     guid: 7ade5882151ee2040a0efdd8d885b71e
   - enabled: 1
-    path: Assets/Scenes/Peleas/GameFight.unity
+    path: Assets/Scenes/Peleas/Jefe.unity
     guid: 1168e6dddb71ca942957a48fe5c24ced
+  - enabled: 1
+    path: Assets/Scenes/Peleas/Jefe2.unity
+    guid: 89aa0795e31346f4bb5ca2c1b2180984
+  - enabled: 1
+    path: Assets/Scenes/Peleas/Jefe3.unity
+    guid: 7c859fe1707673f49ad1c0cf9878485d
+  - enabled: 1
+    path: Assets/Scenes/Peleas/Jefe4.unity
+    guid: 2bf49b4aa892a75459b8efe11839d289
   - enabled: 1
     path: Assets/Scenes/Cofe/Cofre.unity
     guid: 8811391abbf33954cac67044f05517e7
   - enabled: 1
+    path: Assets/Scenes/Cofe/Cofre 1.unity
+    guid: b7056b5752a3e3c40bc0e0a84ef8527e
+  - enabled: 1
+    path: Assets/Scenes/Cofe/Cofre 2.unity
+    guid: 19daac9e0f4bdd148a7ee0128625507d
+  - enabled: 1
     path: Assets/Scenes/Camino/Camino2.unity
     guid: 9f15afc47a82d6b4ea644eb7ca88c176
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Peleas/GameFight 1.unity
     guid: cac784023041b4c498aa0c5883409db7
   - enabled: 1
-    path: Assets/Scenes/Cofe/Cofre 1.unity
-    guid: a75f7e428c4a7b548866bcdfd1a8ee6b
-  - enabled: 1
     path: Assets/Scenes/Camino/Camino3.unity
     guid: caf23d33f6523304a80e36b0a94e1542
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Peleas/GameFight 2.unity
     guid: 6cd09db357c814f44b6f902c92aff8a0
   - enabled: 1
-    path: Assets/Scenes/Cofe/Cofre 2.unity
-    guid: 6470c72bfa6f9c442acd4abd45bf636c
-  - enabled: 1
     path: Assets/Scenes/Camino/Camino4.unity
     guid: dd00c4b17ed1e2d40b7bf5acb2ac728a
-  - enabled: 1
-    path: Assets/Scenes/Peleas/GameFight 3.unity
-    guid: c10a2abe5247ade4fa9f1b164884d1a9
   - enabled: 1
     path: Assets/Scenes/VictoriaFinal.unity
     guid: 934bca326200da741b199defdfc75bd2
@@ -50,4 +56,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Peleas/Random.unity
     guid: 18ffa888520d69c4eb4cb0d4b5989ef6
+  - enabled: 1
+    path: Assets/Scenes/Tienda.unity
+    guid: e40b5ebe0b62bfa45aa059c6e7d35500
   m_configObjects: {}

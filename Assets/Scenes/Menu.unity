@@ -1409,12 +1409,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: ItemsTienda.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: ListaUnidades.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: ListaUnidades2.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
+      propertyPath: JefesDerrotados.Array.size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3020499467919984331, guid: 60ad7895ca5137845b17eac4ba43c300, type: 3}
       propertyPath: ListaUnidades.Array.data[0]

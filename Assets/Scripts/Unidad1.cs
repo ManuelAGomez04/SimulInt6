@@ -262,7 +262,7 @@ public class Unidad : MonoBehaviour
         manaMaximo = data.manaMaximo;
 
 
-        listaCD = new List<string>(data.listaCD);
+        
         habilidades = new List<string>(data.habilidades);
 
         DebilidadFisica = data.DebilidadFisica;

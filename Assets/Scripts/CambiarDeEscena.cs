@@ -11,12 +11,13 @@ public class CambiarDeEscena : MonoBehaviour
 {
     public int escenaIndex;
     public TextMeshPro text;
+    public float tiempoCarga = 1f;
     private AsyncOperation preloadedSceneOperation;
     // Start is called before the first frame update
     void Start()
     {
 
-        StartCoroutine(PreloadRoutine());
+        //StartCoroutine(PreloadRoutine());
     }
 
     private IEnumerator PreloadRoutine()
@@ -56,13 +57,18 @@ public class CambiarDeEscena : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         text.gameObject.SetActive(true);
-        if (Input.GetKeyDown(KeyCode.E)) 
-        { 
-        CambiarEscena();  
+       
+        tiempoCarga -= Time.deltaTime;
+        if (tiempoCarga <= 0f)
+        {
+            CambiarEscena();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        text.gameObject.SetActive(false);
+        if (text.gameObject)
+        {
+            text.gameObject.SetActive(false);
+        }
     }
 }

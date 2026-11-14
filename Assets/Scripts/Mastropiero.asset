@@ -17,8 +17,8 @@ MonoBehaviour:
   LV: 2
   EXP: 0
   EXPNecesaria: 50
-  saludMaxima: 40
-  saludActual: 40
+  saludMaxima: 65
+  saludActual: 65
   manaMaximo: 25
   mana: 25
   danio: 3

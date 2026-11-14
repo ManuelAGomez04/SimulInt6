@@ -24,6 +24,9 @@ public class RecompenzaManager : MonoBehaviour
     public List<Unidad> habilidadesDesbloqueadas;
     public List<PlayerData> ListaUnidades;
     public List<PlayerData> ListaUnidades2;
+    public List<bool> JefesDerrotados;
+    public Vector2 posicionJugador;
+    public List<bool> ItemsTienda;
     private void Awake()
     {
         print (ListaUnidades[0].FirstTime);

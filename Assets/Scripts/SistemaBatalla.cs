@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
+using UnityEngine.SceneManagement;
 
 public enum EstadoBatalla { COMIENZO, TURNOJUG, TURNOENEM, VICTORIA, DERROTA, ESPERANDO }
 
@@ -1036,7 +1037,24 @@ public class SistemaBatalla : MonoBehaviour
                 unidadJugador1.GanarEXP(unidadEnemigo.EXP);
                 unidadJugador2.GanarEXP(unidadEnemigo.EXP);
                 unidadJugador3.GanarEXP(unidadEnemigo.EXP);
+                int escenarioActual = SceneManager.GetActiveScene().buildIndex;
 
+                if (escenarioActual == 2)
+                {
+                    rm.JefesDerrotados[0] = true;
+                }
+                else if (escenarioActual == 3)
+                {
+                    rm.JefesDerrotados[1] = true;
+                }
+                else if (escenarioActual == 4)
+                {
+                    rm.JefesDerrotados[2] = true;
+                }
+                else if (escenarioActual == 5)
+                {
+                    rm.JefesDerrotados[3] = true;
+                }
             }
             dialogoTexto.text = "Ganaste 27 de Oro!";
         }

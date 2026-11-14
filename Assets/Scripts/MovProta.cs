@@ -14,10 +14,33 @@ public class MovProta : MonoBehaviour
 
     Rigidbody2D rigidbody;
     public Animator Animator;
+    public List<GameObject> Jefes;
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
+
+        if (RecompenzaManager.Instance != null)
+        {
+            RecompenzaManager rm = RecompenzaManager.Instance;
+            transform.position = rm.posicionJugador;
+
+
+            if (rm.JefesDerrotados != null && Jefes != null)
+            {
+
+                int count = Mathf.Min(rm.JefesDerrotados.Count, Jefes.Count);
+
+                for (int i = 0; i < count; i++)
+                {
+                    if (rm.JefesDerrotados[i] && Jefes[i] != null)
+                    {
+                        Jefes[i].SetActive(false);
+                    }
+                }
+            }
+        }
     }
+
 
     private void FixedUpdate()
     {
@@ -28,6 +51,11 @@ public class MovProta : MonoBehaviour
     private void Update()
     {
         Movement();
+        if (RecompenzaManager.Instance)
+        {
+            RecompenzaManager rm = RecompenzaManager.Instance;
+            rm.posicionJugador = transform.position;
+        }
     }
 
     private void Movement()

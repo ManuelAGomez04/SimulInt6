@@ -52,7 +52,7 @@ public class SelectRecomp : MonoBehaviour
             {
                 rm.recompenza3 = true;
             }
-          SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+          SceneManager.LoadScene(1);
         }
     }
 }
