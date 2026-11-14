@@ -372,9 +372,11 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Aumento
+  - Nero
+  - Aze
   DebilidadFisica: 1
-  DebilidadFuego: 1
-  DebilidadHielo: 1
+  DebilidadFuego: 2
+  DebilidadHielo: 2
   DebilidadRayo: 1
   DebilidadTierra: 1
   DebilidadAgua: 1
@@ -8748,6 +8750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escenaIndex: 12
   text: {fileID: 0}
+  tiempoCarga: 1
 --- !u!1 &1077544333
 GameObject:
   m_ObjectHideFlags: 0
@@ -11417,14 +11420,16 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Ataque Aturdidor
+  - Kata
+  - Dio
   DebilidadFisica: 1
   DebilidadFuego: 1
   DebilidadHielo: 1
   DebilidadRayo: 1
-  DebilidadTierra: 1
+  DebilidadTierra: 2
   DebilidadAgua: 1
   DebilidadViento: 1
-  DebilidadBalance: 1
+  DebilidadBalance: 2
   DebilidadCaos: 1
   EXP: 0
   EXPNecesaria: 0
@@ -12676,6 +12681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   escenaIndex: 0
   text: {fileID: 0}
+  tiempoCarga: 1
 --- !u!1 &1753213242
 GameObject:
   m_ObjectHideFlags: 0
@@ -14200,10 +14206,10 @@ MonoBehaviour:
   DebilidadHielo: 1
   DebilidadRayo: 1
   DebilidadTierra: 1
-  DebilidadAgua: 1
+  DebilidadAgua: 2
   DebilidadViento: 1
   DebilidadBalance: 1
-  DebilidadCaos: 1
+  DebilidadCaos: 2
   EXP: 0
   EXPNecesaria: 0
   LV: 0
