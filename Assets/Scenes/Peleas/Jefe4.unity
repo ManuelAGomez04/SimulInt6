@@ -3241,12 +3241,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Skeletor
   nivelUnidad: 2
-  danio: 6
+  danio: 10
   saludMaxima: 650
   saludActual: 650
   Bloqueando: 0
-  podermagico: 5
-  fuerza: 7
+  podermagico: 15
+  fuerza: 15
   stunRestante: 0
   mana: 1000
   manaMaximo: 1000

@@ -3242,11 +3242,11 @@ MonoBehaviour:
   nombre: Orco
   nivelUnidad: 2
   danio: 6
-  saludMaxima: 260
-  saludActual: 260
+  saludMaxima: 500
+  saludActual: 500
   Bloqueando: 0
-  podermagico: 3
-  fuerza: 5
+  podermagico: 8
+  fuerza: 8
   stunRestante: 0
   mana: 75
   manaMaximo: 75

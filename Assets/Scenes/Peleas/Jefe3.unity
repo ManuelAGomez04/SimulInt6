@@ -3239,14 +3239,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d672cb39b3a3e42921aca19c65e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Elfo Oscuro
+  nombre: Orco
   nivelUnidad: 2
-  danio: 6
-  saludMaxima: 400
-  saludActual: 400
+  danio: 8
+  saludMaxima: 750
+  saludActual: 750
   Bloqueando: 0
-  podermagico: 3
-  fuerza: 5
+  podermagico: 10
+  fuerza: 10
   stunRestante: 0
   mana: 75
   manaMaximo: 75

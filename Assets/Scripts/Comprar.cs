@@ -71,9 +71,9 @@ public class Comprar : MonoBehaviour
                rm.ListaUnidades[0].saludActual += rm.ListaUnidades[0].saludMaxima;
                rm.ListaUnidades[1].saludActual += rm.ListaUnidades[1].saludMaxima;
                rm.ListaUnidades[2].saludActual += rm.ListaUnidades[2].saludMaxima;
-                rm.ListaUnidades[0].saludActual += rm.ListaUnidades[0].manaMaximo;
-                rm.ListaUnidades[1].saludActual += rm.ListaUnidades[1].manaMaximo;
-                rm.ListaUnidades[2].saludActual += rm.ListaUnidades[2].manaMaximo;
+                rm.ListaUnidades[0].mana += rm.ListaUnidades[0].manaMaximo;
+                rm.ListaUnidades[1].mana += rm.ListaUnidades[1].manaMaximo;
+                rm.ListaUnidades[2].mana += rm.ListaUnidades[2].manaMaximo;
                 Dialogo.text = "Tu Grupo se ha curado";
 
             }
