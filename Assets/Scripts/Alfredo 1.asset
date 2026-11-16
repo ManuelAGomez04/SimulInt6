@@ -29,6 +29,8 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Aumento
+  - Nero
+  - Aze
   listaCD: []
   DebilidadFisica: 1
   DebilidadFuego: 1

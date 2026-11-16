@@ -29,6 +29,8 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Ataque Aturdidor
+  - Kata
+  - Dyo
   listaCD: []
   DebilidadFisica: 1
   DebilidadFuego: 1

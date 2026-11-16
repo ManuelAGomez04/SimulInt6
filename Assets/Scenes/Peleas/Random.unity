@@ -3166,9 +3166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Misigno?
   nivelUnidad: 1
-  danio: 7
-  saludMaxima: 70
-  saludActual: 70
+  danio: 3
+  saludMaxima: 20
+  saludActual: 20
   Bloqueando: 0
   podermagico: 3
   fuerza: 5

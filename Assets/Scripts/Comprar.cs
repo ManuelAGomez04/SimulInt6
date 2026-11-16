@@ -71,6 +71,9 @@ public class Comprar : MonoBehaviour
                rm.ListaUnidades[0].saludActual += rm.ListaUnidades[0].saludMaxima;
                rm.ListaUnidades[1].saludActual += rm.ListaUnidades[1].saludMaxima;
                rm.ListaUnidades[2].saludActual += rm.ListaUnidades[2].saludMaxima;
+                rm.ListaUnidades[0].saludActual += rm.ListaUnidades[0].manaMaximo;
+                rm.ListaUnidades[1].saludActual += rm.ListaUnidades[1].manaMaximo;
+                rm.ListaUnidades[2].saludActual += rm.ListaUnidades[2].manaMaximo;
                 Dialogo.text = "Tu Grupo se ha curado";
 
             }
@@ -153,9 +156,9 @@ public class Comprar : MonoBehaviour
             if (RecompenzaManager.Instance != null)
             {
                 RecompenzaManager rm = RecompenzaManager.Instance;
-                rm.ListaUnidades[0].fuerza += 2;
-                rm.ListaUnidades[0].danio += 2;
-                rm.ListaUnidades[0].podermagico += 2;
+                rm.ListaUnidades[0].fuerza += 3;
+                rm.ListaUnidades[0].danio += 3;
+                rm.ListaUnidades[0].podermagico += 6;
                 rm.ItemsTienda[compra] = true;
                 Dialogo.text = "Sofia ahora es más fuerte";
                 gameObject.SetActive(false);
@@ -170,7 +173,7 @@ public class Comprar : MonoBehaviour
                 RecompenzaManager rm = RecompenzaManager.Instance;
                 rm.ListaUnidades[1].fuerza += 2;
                 rm.ListaUnidades[1].danio += 3;
-                rm.ListaUnidades[1].podermagico += 3;
+                rm.ListaUnidades[1].podermagico += 5;
                 rm.ItemsTienda[compra] = true;
                 Dialogo.text = "Mastropiero ahora es más fuerte";
                 gameObject.SetActive(false);
@@ -182,9 +185,9 @@ public class Comprar : MonoBehaviour
             if (RecompenzaManager.Instance != null)
             {
                 RecompenzaManager rm = RecompenzaManager.Instance;
-                rm.ListaUnidades[2].fuerza += 2;
-                rm.ListaUnidades[2].danio += 3;
-                rm.ListaUnidades[2].podermagico += 4;
+                rm.ListaUnidades[2].fuerza += 3;
+                rm.ListaUnidades[2].danio += 5;
+                rm.ListaUnidades[2].podermagico += 7;
                 rm.ItemsTienda[compra] = true;
                 Dialogo.text = "Alfredo ahora es más fuerte";
                 gameObject.SetActive(false);

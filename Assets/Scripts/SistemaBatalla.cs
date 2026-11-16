@@ -1276,6 +1276,8 @@ IEnumerator Esperar(float tiempo)
             unidadJugador1.saludActual += Jugador.podermagico;
             jugador1HUD.SetSalud(unidadJugador1.saludActual);
             TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
+           
+
         }
         else if (unidadJugador2.saludActual < unidadJugador1.saludActual && unidadJugador2.saludActual < unidadJugador3.saludActual)
         {

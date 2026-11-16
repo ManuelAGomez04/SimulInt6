@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Alfredo
   m_EditorClassIdentifier: 
   nombre: Alfredo
-  nivelUnidad: 1
-  LV: 1
+  nivelUnidad: 0
+  LV: 0
   EXP: 0
   EXPNecesaria: 0
   saludMaxima: 55
@@ -29,6 +29,8 @@ MonoBehaviour:
   habilidades:
   - "Ataque b\xE1sico"
   - Aumento
+  - Nero
+  - Aze
   listaCD: []
   DebilidadFisica: 1
   DebilidadFuego: 1
