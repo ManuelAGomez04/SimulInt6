@@ -3216,7 +3216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 476502631, guid: 41f8e36f4f02b7c4788503d0d794141a, type: 3}
+  m_Sprite: {fileID: 885743629, guid: 48130c7d7a468a44b93c09ccbf5d12e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3242,8 +3242,8 @@ MonoBehaviour:
   nombre: Elfo Oscuro
   nivelUnidad: 2
   danio: 6
-  saludMaxima: 120
-  saludActual: 120
+  saludMaxima: 400
+  saludActual: 400
   Bloqueando: 0
   podermagico: 3
   fuerza: 5
@@ -3259,14 +3259,14 @@ MonoBehaviour:
   habilidades: []
   DebilidadFisica: 1
   DebilidadFuego: 1.2
-  DebilidadHielo: 1
+  DebilidadHielo: 1.6
   DebilidadRayo: 0.8
   DebilidadTierra: 1
-  DebilidadAgua: 1
+  DebilidadAgua: 2
   DebilidadViento: 0.8
   DebilidadBalance: 1.2
   DebilidadCaos: 0.8
-  EXP: 100
+  EXP: 750
   EXPNecesaria: 0
   LV: 0
 --- !u!95 &427026195
@@ -14420,8 +14420,8 @@ Transform:
   m_GameObject: {fileID: 1945840780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03709984, y: -0.0255, z: 0}
-  m_LocalScale: {x: 1.1194227, y: 0.93912035, z: 1}
+  m_LocalPosition: {x: 0.0455, y: -0.0255, z: 0}
+  m_LocalScale: {x: 0.90649235, y: 0.93912035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

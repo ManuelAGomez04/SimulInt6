@@ -3216,7 +3216,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 476502631, guid: 41f8e36f4f02b7c4788503d0d794141a, type: 3}
+  m_Sprite: {fileID: 262781881, guid: 1b39c1611e4fcfd4282deecbce7e83a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3239,32 +3239,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d672cb39b3a3e42921aca19c65e7f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombre: Elfo Oscuro
+  nombre: Skeletor
   nivelUnidad: 2
   danio: 6
-  saludMaxima: 120
-  saludActual: 120
+  saludMaxima: 650
+  saludActual: 650
   Bloqueando: 0
-  podermagico: 3
-  fuerza: 5
+  podermagico: 5
+  fuerza: 7
   stunRestante: 0
-  mana: 75
-  manaMaximo: 75
+  mana: 1000
+  manaMaximo: 1000
   listaCD:
   - Kata
   - Ataque Basico
   - Aze
   - Flu
   - Lluvia de flechas
+  - Agni
+  - Bru
+  - Chio
+  - Flu
   habilidades: []
-  DebilidadFisica: 1
+  DebilidadFisica: 0.8
   DebilidadFuego: 1.2
-  DebilidadHielo: 1
+  DebilidadHielo: 1.7
   DebilidadRayo: 0.8
   DebilidadTierra: 1
   DebilidadAgua: 1
-  DebilidadViento: 0.8
-  DebilidadBalance: 1.2
+  DebilidadViento: 0.5
+  DebilidadBalance: 1.8
   DebilidadCaos: 0.8
   EXP: 100
   EXPNecesaria: 0
@@ -14400,7 +14404,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 6cd687534b58c1f4fa61267b7343e523, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cb6b8bcda62e06d4da93ade0303fab53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -14420,8 +14424,8 @@ Transform:
   m_GameObject: {fileID: 1945840780}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03709984, y: -0.0255, z: 0}
-  m_LocalScale: {x: 1.1194227, y: 0.93912035, z: 1}
+  m_LocalPosition: {x: -0.0371, y: -0.0255, z: 0}
+  m_LocalScale: {x: 0.9002645, y: 0.93912035, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
