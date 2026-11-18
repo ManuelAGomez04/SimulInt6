@@ -3241,7 +3241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Orco
   nivelUnidad: 2
-  danio: 6
+  danio: 20
   saludMaxima: 500
   saludActual: 500
   Bloqueando: 0
@@ -3250,13 +3250,11 @@ MonoBehaviour:
   stunRestante: 0
   mana: 75
   manaMaximo: 75
-  listaCD:
-  - Kata
+  listaCD: []
+  habilidades:
+  - Garrote
+  - Bru
   - Ataque Basico
-  - Aze
-  - Flu
-  - Lluvia de flechas
-  habilidades: []
   DebilidadFisica: 1
   DebilidadFuego: 1.2
   DebilidadHielo: 1

@@ -229,7 +229,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Lanza llamas a " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Fuego");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Fuego");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Fuego"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -255,7 +255,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Congela a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Hielo");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Hielo");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Hielo"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -279,7 +279,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Truena a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Rayo");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Rayo");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Rayo"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -303,7 +303,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Entierra a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Tierra");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Tierra");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Tierra"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -327,7 +327,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Inunda a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Agua");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Agua");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Agua"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -351,7 +351,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Vuela a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Viento");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 2, "Viento");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Viento"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -375,7 +375,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Ilumina a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Balance");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 3, "Balance");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Balance"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -399,7 +399,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Oscurece a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio, "Caos");
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 3, "Caos");
             StartCoroutine(ChequearResistencias(unidadEnemigo, "Caos"));
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
@@ -423,7 +423,7 @@ public class SistemaBatalla : MonoBehaviour
 
 
             dialogoTexto.text = Jugador.nombre + " Detona a  " + unidadEnemigo.nombre;
-            muerto = unidadEnemigo.RecibirDanio(Jugador.danio);
+            muerto = unidadEnemigo.RecibirDanio(Jugador.danio * 4);
             enemigoHUD.SetSalud(unidadEnemigo.saludActual);
             TextoVidaEnemigo.text = unidadEnemigo.saludActual.ToString() + "/" + unidadEnemigo.saludMaxima.ToString();
             HUDBatalla hud = seleccionarHud(Jugador);
@@ -821,9 +821,9 @@ public class SistemaBatalla : MonoBehaviour
 
             dialogoTexto.text = unidadEnemigo.nombre + " LLueven flechas sobre el grupo ";
             yield return new WaitForSeconds(0.5f);
-            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio, "Fisico");
-            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio, "Fisico");
-            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio, "Fisico");
+            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio * 3, "Fisico");
+            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio * 3, "Fisico");
+            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio * 3, "Fisico");
             StartCoroutine(ChequearResistencias(unidadJugador1, "Fisico"));
             yield return new WaitForSeconds(0.5f);
             StartCoroutine(ChequearResistencias(unidadJugador2, "Fisico"));
@@ -841,11 +841,47 @@ public class SistemaBatalla : MonoBehaviour
                 muerto = true;
             }
         }
+        if (patronAtaquesEnemigo[indexPatron] == "Garrote")
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " Garrotea ";
+            yield return new WaitForSeconds(0.5f);
+            bool muerto1 = unidadJugador1.RecibirDanio(unidadEnemigo.danio * 5, "Fisico");
+            bool muerto2 = unidadJugador2.RecibirDanio(unidadEnemigo.danio * 5, "Fisico");
+            bool muerto3 = unidadJugador3.RecibirDanio(unidadEnemigo.danio * 5, "Fisico");
+            StartCoroutine(ChequearResistencias(unidadJugador1, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(ChequearResistencias(unidadJugador2, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(ChequearResistencias(unidadJugador3, "Fisico"));
+            yield return new WaitForSeconds(0.5f);
+            jugador1HUD.SetSalud(unidadJugador1.saludActual);
+            jugador2HUD.SetSalud(unidadJugador2.saludActual);
+            jugador3HUD.SetSalud(unidadJugador3.saludActual);
+            TextoVida1.text = unidadJugador1.saludActual.ToString() + "/" + unidadJugador1.saludMaxima.ToString();
+            TextoVida2.text = unidadJugador2.saludActual.ToString() + "/" + unidadJugador2.saludMaxima.ToString();
+            TextoVida3.text = unidadJugador3.saludActual.ToString() + "/" + unidadJugador3.saludMaxima.ToString();
+            if (muerto1 || muerto2 || muerto3)
+            {
+                muerto = true;
+            }
+
+        }
+        if (patronAtaquesEnemigo[indexPatron] == "Ataque Enorme")
+        {
+
+            dialogoTexto.text = unidadEnemigo.nombre + " ataca a " + pj.nombre;
+            yield return new WaitForSeconds(0.5f);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 8, "Fisico");
+            StartCoroutine(ChequearResistencias(pj, "Fisico"));
+            hud.SetSalud(pj.saludActual);
+            texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
+        }
         if (patronAtaquesEnemigo[indexPatron] == "Bru" && unidadEnemigo.mana >= 5 && unidadEnemigo.chequearCD("Bru") == false)
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Lanza llamas a " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Fuego");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Fuego");
             StartCoroutine(ChequearResistencias(pj, "Fuego"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -864,7 +900,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Congela a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Hielo");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Hielo");
             StartCoroutine(ChequearResistencias(pj, "Hielo"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -882,7 +918,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Truena a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Rayo");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Rayo");
             StartCoroutine(ChequearResistencias(pj, "Rayo"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -900,7 +936,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Entierra a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Tierra");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Tierra");
             StartCoroutine(ChequearResistencias(pj, "Tierra"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -918,7 +954,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Inunda a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Agua");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Agua");
             StartCoroutine(ChequearResistencias(pj, "Agua"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -936,7 +972,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Vuela a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Viento");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 2, "Viento");
             StartCoroutine(ChequearResistencias(pj, "Viento"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -954,7 +990,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Ilumina a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Balance");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 3, "Balance");
             StartCoroutine(ChequearResistencias(pj, "Balance"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -972,7 +1008,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Oscurece a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio, "Caos");
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 3, "Caos");
             StartCoroutine(ChequearResistencias(pj, "Caos"));
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
@@ -990,7 +1026,7 @@ public class SistemaBatalla : MonoBehaviour
         {
 
             dialogoTexto.text = unidadEnemigo.nombre + " Detona a  " + pj.nombre;
-            muerto = pj.RecibirDanio(unidadEnemigo.danio);
+            muerto = pj.RecibirDanio(unidadEnemigo.danio * 5);
             hud.SetSalud(pj.saludActual);
             texto.text = pj.saludActual.ToString() + "/" + pj.saludMaxima.ToString();
 
